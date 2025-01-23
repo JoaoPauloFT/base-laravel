@@ -1,0 +1,134 @@
+// Variables
+@import 'variables';
+
+.body-print {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 10px;
+
+    div {
+        max-width: 110px;
+    }
+
+    .infos {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        width: 100%;
+    }
+
+    .barcode {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        svg {
+            width: 100% !important;
+            height: 30px !important;
+        }
+
+        p {
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+    }
+
+    p {
+        color: $black-color;
+        margin: 0;
+    }
+
+    .name {
+        font-size: 0.5rem;
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &.store {
+            font-size: 0.625rem;
+            text-align: center;
+        }
+    }
+
+    .price {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    &.type2 {
+        margin-top: 50px;
+        margin-left: 12px;
+    }
+}
+
+.body-bag {
+    font-family: Arial, Helvetica, sans-serif;
+
+    .infoSeller {
+        padding: 0.5rem 0;
+
+        p {
+            font-size: 0.75rem;
+            margin: 0.25rem;
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    table, th, td {
+        border: 1px solid $black-color;
+        padding: 0.125rem 0.5rem;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.75rem;
+
+        .description {
+            width: 300px;
+
+            span {
+                width: 300px;
+                display: block;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .obsInfo {
+        margin-top: 1rem;
+        font-size: 0.75rem;
+    }
+}
+
+.separator {
+    width: 5px;
+}
+
+.center {
+    text-align: center;
+}
+
+@page{
+    size: auto;
+    margin: 5mm;
+}
+
+@media print {
+    .pagebreak {
+        clear: both;
+        page-break-after: always;
+    }
+}

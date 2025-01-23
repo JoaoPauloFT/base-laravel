@@ -1,0 +1,31 @@
+// Variables
+@import 'variables';
+
+h2 {
+    margin: 0.75rem 0;
+}
+
+p {
+    display: flex;
+    margin-bottom: 0.5rem;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.body {
+    padding: 0 10px;
+
+    .container-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+        margin-left: -12px;
+
+        .card-permission {
+            width: 50%;
+            border-left: 2px solid $gray-1;
+            margin: 10px 0 10px -2px;
+            padding: 0 20px;
+        }
+    }
+}

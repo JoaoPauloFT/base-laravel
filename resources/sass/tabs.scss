@@ -1,0 +1,22 @@
+// Variables
+@import 'variables';
+
+.tab-show {
+    background-color: $white-color;
+    border-radius: 0.5rem;
+
+    .nav {
+        .nav-link {
+            border: none;
+            background-color: $white-color;
+            margin-bottom: 0;
+            padding: 1rem 1.5rem;
+
+            &.active {
+                border-bottom: solid $primary-color 2px;
+                font-weight: bold;
+                color: $primary-color;
+            }
+        }
+    }
+}

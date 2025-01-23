@@ -1,0 +1,39 @@
+// Variables
+@import 'variables';
+
+.name-product {
+    width: 100%;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: $font-0;
+}
+
+.qtd-column {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+p {
+    margin: 0;
+    &.title {
+        font-weight: bold;
+    }
+    &.value {
+        font-size: 1.25rem;
+    }
+}
+
+.button-action {
+    display: flex;
+    gap: 1rem;
+}
+
+.divActions a {
+    color: $font-0!important;
+    font-size: 1rem;
+}
+
+.center-items input {
+    margin: auto;
+}

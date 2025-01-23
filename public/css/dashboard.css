@@ -1,0 +1,209 @@
+.content-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+.content-dashboard .block1 {
+  display: flex;
+  gap: 24px;
+}
+.content-dashboard .block1 .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+.content-dashboard .block1 .cards .card-line {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+}
+.content-dashboard .block1 .cards .card-line .card-dash {
+  width: 100%;
+  display: flex;
+  padding: 32px 24px;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid #E7E7E7;
+  background: url("../images/background-card.svg") no-repeat right 16px center;
+  background-color: #FFFFFF;
+}
+.content-dashboard .block1 .cards .card-line .card-dash .description {
+  color: #7E7E7E;
+  font-size: 1rem;
+  line-height: 100%;
+}
+.content-dashboard .block1 .cards .card-line .card-dash .value {
+  color: #2B2A2A;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+.content-dashboard .block1 .checkin-week {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #E7E7E7;
+  background: #FFFFFF;
+}
+.content-dashboard .block1 .checkin-week .chart-checkin {
+  padding: 16px 24px;
+  height: 100%;
+}
+.content-dashboard .block2 {
+  display: flex;
+  gap: 24px;
+}
+.content-dashboard .block2 .donations-months {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  border: 1px solid #E7E7E7;
+  background: #FFFFFF;
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+.content-dashboard .block2 .donations-months .chart-donation {
+  padding: 16px;
+}
+.content-dashboard .block2 .payment-method-more-useds {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  border: 1px solid #E7E7E7;
+  background: #FFFFFF;
+  width: 100%;
+}
+.content-dashboard .block2 .payment-method-more-useds .chart-payment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+.content-dashboard .block2 .payment-method-more-useds .chart-payment canvas {
+  max-width: 320px;
+  max-height: 320px;
+}
+.content-dashboard .block3 {
+  display: flex;
+  gap: 24px;
+}
+.content-dashboard .block3 .top-rankings {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  border: 1px solid #E7E7E7;
+  background: #FFFFFF;
+  width: 100%;
+}
+.content-dashboard .block3 .top-rankings .top-ranking {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 444px;
+  overflow: auto;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+.content-dashboard .block3 .top-rankings .top-ranking::-webkit-scrollbar {
+  width: 8px;
+}
+.content-dashboard .block3 .top-rankings .top-ranking::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+.content-dashboard .block3 .top-rankings .top-ranking::-webkit-scrollbar-thumb {
+  background: rgba(4, 42, 86, 0.6980392157);
+  border-radius: 8px;
+}
+.content-dashboard .block3 .top-rankings .top-ranking::-webkit-scrollbar-thumb:hover {
+  background: #0000AA;
+}
+.content-dashboard .block3 .top-rankings .top-ranking .legend {
+  display: flex;
+  justify-content: space-between;
+  color: #2B2A2A;
+  font-size: 0.825rem;
+  line-height: 1rem;
+}
+.content-dashboard .block3 .top-rankings .top-ranking .item-ranking {
+  display: flex;
+  justify-content: space-between;
+}
+.content-dashboard .block3 .top-rankings .top-ranking .item-ranking .desc {
+  display: flex;
+  gap: 0.5rem;
+  color: #7E7E7E;
+  font-size: 0.825rem;
+  line-height: 1rem;
+  align-items: center;
+}
+.content-dashboard .block3 .top-rankings .top-ranking .item-ranking .desc p {
+  margin: 0;
+}
+.content-dashboard .block3 .top-rankings .top-ranking .item-ranking .desc p.bests {
+  color: #2B2A2A;
+}
+.content-dashboard .block3 .top-rankings .top-ranking .item-ranking .desc img {
+  width: 40px;
+  height: 20px;
+}
+.content-dashboard .block3 .top-rankings .top-ranking .item-ranking .value-ranking {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  color: #7E7E7E;
+  font-size: 0.825rem;
+  line-height: 1rem;
+}
+.content-dashboard .block3 .top-rankings .top-ranking .item-ranking .value-ranking .progress {
+  width: 100px;
+  height: 8px;
+  border-radius: 8px;
+  transform: rotate(0.5turn);
+}
+.content-dashboard .block3 .top-rankings .top-ranking .item-ranking .value-ranking .progress .progress-bar {
+  background-color: #0000AA !important;
+}
+
+.title-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 16px 8px 16px;
+}
+.title-item h2 {
+  color: #2B2A2A;
+  font-size: 1.25rem;
+  line-height: 100%;
+  margin: 0;
+}
+.title-item h2 span {
+  margin-left: 4px;
+  color: #7E7E7E;
+  font-size: 0.825rem;
+}
+.title-item .switchs {
+  display: flex;
+  gap: 0.5rem;
+}
+.title-item .switchs .switch {
+  color: #7E7E7E;
+  font-size: 0.825rem;
+  line-height: 1.5rem;
+  font-weight: 400 !important;
+  margin: 0;
+}
+.title-item .switchs .switch.on {
+  color: #0000AA !important;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #0000AA;
+  border-color: #0000AA;
+}
+
+/*# sourceMappingURL=dashboard.css.map */

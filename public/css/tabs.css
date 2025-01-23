@@ -1,0 +1,17 @@
+.tab-show {
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+}
+.tab-show .nav .nav-link {
+  border: none;
+  background-color: #FFFFFF;
+  margin-bottom: 0;
+  padding: 1rem 1.5rem;
+}
+.tab-show .nav .nav-link.active {
+  border-bottom: solid #0000AA 2px;
+  font-weight: bold;
+  color: #0000AA;
+}
+
+/*# sourceMappingURL=tabs.css.map */

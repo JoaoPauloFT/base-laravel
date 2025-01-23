@@ -1,0 +1,38 @@
+.name-product {
+  width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #2B2A2A;
+}
+
+.qtd-column {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+p {
+  margin: 0;
+}
+p.title {
+  font-weight: bold;
+}
+p.value {
+  font-size: 1.25rem;
+}
+
+.button-action {
+  display: flex;
+  gap: 1rem;
+}
+
+.divActions a {
+  color: #2B2A2A !important;
+  font-size: 1rem;
+}
+
+.center-items input {
+  margin: auto;
+}
+
+/*# sourceMappingURL=show.css.map */

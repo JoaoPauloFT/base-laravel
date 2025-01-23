@@ -1,0 +1,115 @@
+.body-print {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 10px;
+}
+.body-print div {
+  max-width: 110px;
+}
+.body-print .infos {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  width: 100%;
+}
+.body-print .barcode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.body-print .barcode svg {
+  width: 100% !important;
+  height: 30px !important;
+}
+.body-print .barcode p {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.body-print p {
+  color: #000000;
+  margin: 0;
+}
+.body-print .name {
+  font-size: 0.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.body-print .name.store {
+  font-size: 0.625rem;
+  text-align: center;
+}
+.body-print .price {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+}
+.body-print.type2 {
+  margin-top: 50px;
+  margin-left: 12px;
+}
+
+.body-bag {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.body-bag .infoSeller {
+  padding: 0.5rem 0;
+}
+.body-bag .infoSeller p {
+  font-size: 0.75rem;
+  margin: 0.25rem;
+}
+.body-bag .infoSeller p span {
+  font-weight: bold;
+}
+.body-bag h1 {
+  text-align: center;
+  font-size: 1.25rem;
+}
+.body-bag table, .body-bag th, .body-bag td {
+  border: 1px solid #000000;
+  padding: 0.125rem 0.5rem;
+}
+.body-bag table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+.body-bag table .description {
+  width: 300px;
+}
+.body-bag table .description span {
+  width: 300px;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.body-bag .obsInfo {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+}
+
+.separator {
+  width: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+@page {
+  size: auto;
+  margin: 5mm;
+}
+@media print {
+  .pagebreak {
+    clear: both;
+    page-break-after: always;
+  }
+}
+
+/*# sourceMappingURL=print.css.map */
