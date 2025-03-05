@@ -111,6 +111,10 @@ return [
     'description_edit_users_web' => 'Editando usuário com acesso ao web',
     'title_delete_user_web' => 'Deseja excluir esse usuário?',
 
+    //Manage Users
+    'manage_users' => 'Gerenciar Usuários',
+    'manage_users_description' => 'Visualize e gerencie todos os usuários com acesso à plataforma. Adicione novos usuários, atualize seus detalhes e atribua funções.',
+
     //Modal Edit Password
     'edit_password' => 'Editar senha de acesso',
     'edit_description_password' => 'Editando senha de acesso do usuário',
@@ -128,6 +132,9 @@ return [
     'zeroRecords' => 'Nenhum resultado encontrado',
     'show' => 'Mostrar',
     'download' => 'Baixar',
+    'search' => 'Pesquisar',
+    'columns' => 'Colunas',
+    'filters' => 'Filtros:',
 
     //Permissions
     'role' => 'Funções',

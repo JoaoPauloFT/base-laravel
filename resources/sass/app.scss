@@ -4,105 +4,102 @@
 //Forms
 @import 'forms';
 
-//Topbar
-.navbar-main {
-    padding: 1rem 1.5rem 0 1.5rem;
-    gap: 0.5rem;
-    border-bottom: 2px solid $secundary-color;
-    background: $primary-color;
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-    .navbar-brand {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        align-items: flex-end;
-
-        .text-version {
-            color: $font-2;
-            font-size: 0.875rem;
-            line-height: 1rem;
-        }
-    }
-
-
-    .navbar-container {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-
-        .logo-navbar {
-            width: 160px;
-            height: 40px;
-        }
-
-        .navbar-collapse {
-            justify-content: center;
-            align-items: flex-end;
-
-            .navbar-nav {
-                gap: 1.5rem;
-
-                a {
-                    display: flex;
-                    padding: 0.75rem 0.5rem;
-                    gap: 0.25rem;
-                    color: $white-color;
-                    font-size: 1rem;
-                    align-items: center;
-                    &.active:not(.dropdown-item) {
-                        border-bottom: 2px solid $secundary-color;
-                        padding-bottom: 0.625rem;
-                    }
-                }
-            }
-        }
-    }
-
+body {
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
-.user-menu .nav-link {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    gap: 0.5rem;
+//Sidebar
+
+.text-menu {
     color: $white-color;
     text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 100%;
-    padding: 0;
-
-    img, span {
-        margin: 0!important;
-        padding: 0;
-    }
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: 150%;
 }
 
-.dropdown-menu {
-    &.show {
+.custom-sidebar {
+    background-color: $primary-color;
+    padding: 0.5rem;
+    .sidebar {
+        padding: 2rem 0;
+    }
+
+    .custom-top-sidebar {
+        padding: 0 0 0.5rem;
+        border-bottom: 1px solid $white-color !important;
+    }
+
+    .custom-nav .nav-item>.nav-link.active, .nav-treeview>.nav-item>.nav-link.active {
+        background-color: $primary-color-hover !important;
+        color: $white-color;
+    }
+
+    .custom-nav .nav-link {
         display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        padding: 0!important;
-    }
+        align-items: center;
+        gap: 0.5rem;
 
-    li {
-        width: 100%;
-    }
+        i {
+            font-size: 1.25rem;
+        }
 
-    .dropdown-item {
-        padding: 1rem!important;
-        color: $font-3!important;
-        font-size: 0.875rem;
-        line-height: 1rem;
-        width: 100%;
-        &.active {
-            background-color: $white-color!important;
+        p {
+            color: $white-color;
         }
     }
 }
 
+.sidebar-mini.sidebar-collapse .custom-sidebar:not(:hover) {
+    .custom-top-sidebar {
+        justify-content: center;
 
+        .brand-text {
+            width: 0;
+        }
+    }
+
+    .custom-nav .nav-item .nav-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2.5rem;
+
+        p {
+            display: none;
+        }
+    }
+}
+
+.sidebar-mini.sidebar-collapse .custom-sidebar:not(.sidebar-no-expand):hover .brand-link {
+    width: auto;
+}
+
+//Topbar
+
+.custom-navtop .navbar-nav .nav-link, .navbar-light .user-name .nav-link {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    span {
+        margin-right: 0.5rem;
+    }
+
+    img {
+        margin: -0.5rem 0 0 0;
+    }
+
+    i {
+        font-size: 1.5rem;
+    }
+}
 
 //Body
 .content-wrapper {
@@ -111,27 +108,24 @@
 
 .content-header {
     padding: 0!important;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 0.25rem;
+    width: 100%;
 
-    .container {
+    .more-header {
         display: flex;
+        align-items: flex-end;
         justify-content: space-between;
-        align-items: center;
-        gap: 0.25rem;
         width: 100%;
+        gap: 9%;
 
-        .more-header {
+        .filters {
             display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
+            gap: 1rem;
             width: 100%;
-            gap: 9%;
 
-            .filters {
-                display: flex;
-                gap: 1rem;
-                width: 100%;
-
-            }
         }
     }
 }
@@ -143,17 +137,17 @@
 
 .title {
     h1 {
-        color: $font-0;
-        font-size: 1.75rem;
-        line-height: 2rem;
+        color: $primary-color;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 150%;
     }
 
     p {
         color: $font-1;
         font-size: 1rem;
-        line-height: 125%;
+        line-height: 150%;
         margin: 0;
-        white-space: nowrap;
     }
 }
 
@@ -165,7 +159,7 @@
 
 .actions {
     a {
-        @extend .secondary-button;
+        @extend .primary-button;
 
         .br {
             border: 1px solid #2B2A2A;
@@ -185,6 +179,7 @@
     border-radius: 4px;
     background: $white-color;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.20), 0px 0px 1px 0px rgba(0, 0, 0, 0.13);
+    margin: 0 -0.5rem !important;
 }
 
 .hidden {

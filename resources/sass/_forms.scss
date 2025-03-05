@@ -7,7 +7,7 @@
     padding: 0.5rem!important;
     color: $font-0!important;
     font-size: 0.875rem!important;
-    line-height: 1rem!important;
+    line-height: 140%!important;
     width: 100%!important;
     display: block;
     &:focus-visible {
@@ -20,6 +20,9 @@
         border: 1px solid #E04B59!important;
     }
     &:disabled {
+        background-color: $gray-1!important;
+    }
+    &:read-only {
         background-color: $gray-1!important;
     }
 }
@@ -74,38 +77,45 @@
     }
 }
 
-.primary-button {
+.default-buttons {
     all: unset!important;
-    padding: 0.5rem 1rem!important;
+    padding: 0.5rem 0.75rem!important;
     gap: 0.25rem!important;
     border-radius: 0.25rem!important;
-    background-color: $primary-color!important;
-    color: $white-color!important;
     font-size: 0.875rem!important;
-    line-height: 1rem!important;
+    line-height: 140%!important;
+    text-align: center!important;
+    font-weight: 600!important;
+    display: flex !important;
+    align-items: center!important;
     cursor: pointer!important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.10);
+    &:disabled {
+        opacity: 0.4 !important;
+    }
+
+    i {
+        font-size: 1.25rem;
+    }
+
+}
+
+.primary-button {
+    @extend .default-buttons;
+    color: $white-color!important;
+    background-color: $primary-color!important;
     &:hover {
         background-color: $primary-color-hover!important;
-    }
-    &:disabled {
-        opacity: 0.5 !important;
     }
 }
 
 .secondary-button {
-    all: unset!important;
-    display: flex!important;
-    padding: 0.5rem 1rem!important;
-    gap: 0.5rem!important;
-    border-radius: 0.25rem!important;
-    border: 1px solid $gray-0!important;
-    background: $white-color!important;
-    color: $font-0!important;
-    font-size: 0.875rem!important;
-    line-height: 1rem!important;
-    cursor: pointer!important;
+    @extend .default-buttons;
+    border: 1px solid $border-color!important;
+    color: $font-3!important;
+    background-color: $white-color!important;
     &:hover {
-        background-color: $gray-0!important;
+        background-color: $secondary-button-hover!important;
     }
 }
 
@@ -154,6 +164,8 @@
 
                 .select2-selection__placeholder {
                     color: $font-2;
+                    font-size: 0.875rem;
+                    line-height: 140%;
                 }
 
                 .select2-selection__choice {
@@ -166,7 +178,7 @@
             }
 
             .select2-selection__arrow {
-                height: 2rem!important;
+                height: 2.25rem!important;
                 top: 0!important;
                 right: 0.5rem!important;
                 width: 1rem!important;
@@ -218,9 +230,32 @@
         color: $font-2!important;
     }
 
-    button p {
-        white-space: nowrap;
-        margin: 0;
+    i {
+        font-size: 1rem;
+    }
+}
+
+.generate-password-button {
+    button  {
+        p {
+            white-space: nowrap;
+            margin: 0;
+        }
+
+        i {
+            font-size: 1.25rem;
+        }
+    }
+
+}
+
+.condition-password{
+    p {
+        color: $font-3;
+        font-size: 0.75rem;
+        font-style: italic;
+        line-height: 130%;
+        margin: 0.25rem 0 0;
     }
 }
 
@@ -237,6 +272,7 @@
         display: flex;
         gap: 0.25rem;
         align-items: flex-start;
+        padding-left: 0.5rem !important;
 
         input {
             width: 1rem;

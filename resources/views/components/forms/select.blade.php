@@ -13,36 +13,36 @@
     @endif
 </div>
 
-    <script>
-        function afterLoad{{ $field.$formId }}() {
-            @if($mask == 'search-select')
-                $('#{{ $field.$formId }}').select2({
-                    dropdownParent: $('#{{ $idModal }}'),
-                    allowClear: true
-                });
+<script>
+    function afterLoad{{ $field.$formId }}() {
+        @if($mask == 'search-select')
+        $('#{{ $field.$formId }}').select2({
+            dropdownParent: $('#{{ $idModal }}'),
+            allowClear: true
+        });
 
-                $('#{{ $field.$formId }}').val('{{ old('form') == 'formSubmit'.$formId ? old($field) : $value }}').trigger('change');
+        $('#{{ $field.$formId }}').val('{{ old('form') == 'formSubmit'.$formId ? old($field) : $value }}').trigger('change');
 
-                @if($errors->has($field))
-                $('#{{ $field.$formId }}').data('select2').$container.addClass('errorField');
-                @endif
-
-                $('.input-form').on('select2:select', function () {
-                    $(this).data('select2').$container.removeClass('errorField');
-                    $(this).parent().find('.messageError').remove();
-                });
-            @elseif($value)
-                $('#{{ $field.$formId }}').val('{{ old('form') == 'formSubmit'.$formId ? old($field) : $value }}');
-            @endif
-        }
-
-        @if($isTab)
-            $('#{{ $idModal }}').on('shown.bs.modal', function () {
-                afterLoad{{ $field.$formId }}();
-            });
-        @else
-            window.addEventListener('load', function () {
-                afterLoad{{ $field.$formId }}();
-            });
+        @if($errors->has($field) && old('form') == 'formSubmit'.$formId)
+        $('#{{ $field.$formId }}').data('select2').$container.addClass('errorField');
         @endif
-    </script>
+
+        $('.input-form').on('select2:select', function () {
+            $(this).data('select2').$container.removeClass('errorField');
+            $(this).parent().find('.messageError').remove();
+        });
+        @elseif($value)
+        $('#{{ $field.$formId }}').val('{{ old('form') == 'formSubmit'.$formId ? old($field) : $value }}');
+        @endif
+    }
+
+    @if($isTab)
+    $('#{{ $idModal }}').on('shown.bs.modal', function () {
+        afterLoad{{ $field.$formId }}();
+    });
+    @else
+    window.addEventListener('load', function () {
+        afterLoad{{ $field.$formId }}();
+    });
+    @endif
+</script>

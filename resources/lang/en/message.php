@@ -111,6 +111,10 @@ return [
     'description_edit_users_web' => 'Editing user with web access',
     'title_delete_user_web' => 'Do you want to delete this user?',
 
+    //Manage Users
+    'manage_users' => 'Manage users',
+    'manage_users_description' => 'View and manage all users with access to the platform. Add new users, update their details and assign roles.',
+
     //Modal Edit Password
     'edit_password' => 'Edit access password',
     'edit_description_password' => 'Editing user access password',
@@ -128,6 +132,9 @@ return [
     'zeroRecords' => 'No results found',
     'show' => 'Show',
     'download' => 'Download',
+    'search' => 'Search',
+    'columns' => 'Columns',
+    'filters' => 'Filters:',
 
     //Permissions
     'role' => 'Funciones',

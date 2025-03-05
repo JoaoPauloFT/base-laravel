@@ -6,18 +6,18 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
-@section('title', 'Funcionários')
+@section('title', __('message.manage_users'))
 
 @section('content_header')
-    <div class="title mb-3">
-        <h1>Funcionários</h1>
-        <p>Listagem e cadastro de funcionários que tem acesso a plataforma web</p>
+    <div class="title mb-4">
+        <h1>{{ __('message.manage_users') }}</h1>
+        <p>{{ __('message.manage_users_description') }}</p>
     </div>
     @can('create_user')
-        <div class="actions mb-3">
+        <div class="actions mb-4">
             <a id="createButton" href="#" data-toggle="modal" data-target="#modalForm">
-                <i class="fa-solid fa-plus br"></i>
-                Cadastrar funcionários
+                <i class="ti ti-library-plus"></i>
+                {{ __('message.add_users') }}
             </a>
         </div>
     @endcan

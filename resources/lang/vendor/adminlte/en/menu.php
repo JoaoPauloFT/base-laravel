@@ -11,4 +11,5 @@ return [
     'Pre-Registration'      => 'Pre-Registration',
     'visit'                 => 'Visits',
     'volunteer'             => 'Volunteers',
+    'manage_users'          => 'Manage users',
 ];

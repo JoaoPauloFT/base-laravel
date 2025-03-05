@@ -2,7 +2,7 @@
     @csrf()
     @method('DELETE')
     <button id="submitDelete{{ $id }}" type="button" class="btnAction">
-        <i class="fa-solid fa-x"></i>
+        <i class="ti ti-x"></i>
     </button>
 </form>
 

@@ -29,41 +29,47 @@
 }
 
 .dt-buttons {
-     padding: 1rem;
-     flex-direction: row-reverse;
-     width: auto;
-     flex-wrap: nowrap;
-     display: flex;
-     gap: 1rem;
+    padding: 1rem;
+    flex-direction: row-reverse;
+    width: auto;
+    flex-wrap: nowrap;
+    display: flex;
+    gap: 1rem;
 
-     .dt-button {
-         @extend .secondary-button;
+    .dt-button {
+        @extend .secondary-button;
 
-         span {
-             display: flex;
-             gap: 0.25rem;
-             align-items: center;
+        span {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
 
-             svg {
-                 width: 16px;
-                 height: 16px;
-             }
+            i {
+                font-size: 1.25rem;
+            }
 
-             .fa-angle-down {
-                 margin-bottom: -2px;
-             }
-         }
-     }
- }
+            .fa-angle-down {
+                margin-bottom: -2px;
+            }
+        }
+    }
+}
 
 .selects {
     padding: 1rem;
     display: flex;
     gap: 1rem;
     border-top: 1px solid #E7E7E7;
+    align-items: center;
+
+    .filter-span {
+        color: $font-0;
+        font-size: 0.875rem;
+        line-height: 140%;
+    }
 
     .select2 {
-        width: 184px!important;
+        width: 160px!important;
     }
 }
 
@@ -73,12 +79,10 @@
 
 .btnAction {
     all: unset!important;
-    padding: 0.25rem!important;
-    color: $font-5!important;
+    color: $font-2!important;
     cursor: pointer!important;
-    svg {
-        width: 1rem!important;
-        height: 1rem!important;
+    i {
+        font-size: 1.5rem;
     }
 }
 
@@ -120,9 +124,9 @@
 
         .dataTables_info {
             padding-top: 0!important;
-            color: $font-1!important;
+            color: $font-2!important;
             font-size: 0.875rem;
-            line-height: 1rem;
+            line-height: 140%;
         }
     }
 }
@@ -136,12 +140,11 @@
             border: 1px solid $gray-0!important;
             padding: 0.5rem 1rem!important;
             margin-left: 0!important;
-            border-radius: 0!important;
             color: $primary-color!important;
             font-size: 0.875rem;
-            line-height: 1rem;
+            line-height: 140%;
             &:hover {
-                background: $primary-color!important;
+                background: $primary-color-hover!important;
                 color: $white-color!important;
             }
             &.current {
@@ -150,6 +153,10 @@
             }
             &.disabled:hover {
                 background: transparent!important;
+            }
+            &.disabled {
+                opacity: 0.4!important;
+                color: $primary-color!important;
             }
             &.previous {
                 border-radius: 4px 0px 0px 4px!important;
@@ -173,42 +180,42 @@ table.list {
 
     tr {
         border-collapse: collapse!important;
-        height: 48px;
-    }
+        min-height: 60px;
 
-    th {
-        color: $font-0;
-        font-size: 0.875rem;
-        font-weight: 600!important;
-        line-height: 1rem;
-        padding: 0.75rem 1rem!important;
-        border-top: 2px solid #DEE2E6!important;
-        border-bottom: 2px solid #DEE2E6!important;
-        &.center {
-            text-align: center!important;
+        th {
+            color: $font-0;
+            font-size: 0.875rem;
+            font-weight: 600!important;
+            line-height: 140%;
+            padding: 0.75rem 1rem!important;
+            border-top: 2px solid #DEE2E6!important;
+            border-bottom: 2px solid #DEE2E6!important;
+            &.center {
+                text-align: center!important;
+            }
         }
-    }
 
-    td {
-        box-shadow: none!important;
-        padding: 0.5rem 1rem!important;
-        border-top: 0!important;
-        border-bottom: 1px solid #DEE2E6!important;
-        color: $font-0!important;
-        font-size: 0.825rem!important;
-        line-height: 1rem!important;
-        &.center {
-            text-align: center!important;
-        }
-        &.double-line {
-            text-align: right!important;
+        td {
+            box-shadow: none!important;
+            padding: 1rem!important;
+            border-top: 0!important;
+            border-bottom: 1px solid #DEE2E6!important;
+            color: $font-0!important;
+            font-size: 0.825rem!important;
+            line-height: 140%;
+            &.center {
+                text-align: center!important;
+            }
+            &.double-line {
+                text-align: right!important;
 
-            p {
-                color: $font-2;
-                font-size: 0.75rem;
-                line-height: 1rem;
-                margin: 0;
-                margin-top: 0.25rem;
+                p {
+                    color: $font-2;
+                    font-size: 0.75rem;
+                    line-height: 1rem;
+                    margin: 0;
+                    margin-top: 0.25rem;
+                }
             }
         }
     }
@@ -285,9 +292,9 @@ table.dataTable thead>tr>th.sorting:not(.sorting_asc):before, table.dataTable th
 }
 
 .imgRowTable {
-    width: 40px;
-    height: 40px;
-    border-radius: 2px;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
     vertical-align: sub!important;
     margin-right: 0.5rem;
 }

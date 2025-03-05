@@ -84,13 +84,13 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => true,
+        'enabled' => false,
         'img' => [
             'path' => 'images/logo_system.png',
             'alt' => 'Auth Logo',
             'class' => '',
-            'width' => 160,
-            'height' => 40,
+            'width' => 50,
+            'height' => 50,
         ],
         'text_enabled' => false
     ],
@@ -100,7 +100,10 @@ return [
     | Preloader Animation
     |--------------------------------------------------------------------------
     |
-    | Here you can change the preloader animation configuration.
+    | Here you can change the preloader animation configuration. Currently, two
+    | modes are supported: 'fullscreen' for a fullscreen preloader animation
+    | and 'cwrapper' to attach the preloader animation into the content-wrapper
+    | element and avoid overlapping it with the sidebars and the top navbar.
     |
     | For detailed instructions you can look the preloader section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
@@ -109,6 +112,7 @@ return [
 
     'preloader' => [
         'enabled' => true,
+        'mode' => 'fullscreen',
         'img' => [
             'path' => 'images/simbolo.png',
             'alt' => 'Base Laravel Preloader Image',
@@ -149,7 +153,7 @@ return [
     |
     */
 
-    'layout_topnav' => true,
+    'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => null,
     'layout_fixed_navbar' => null,
@@ -168,12 +172,12 @@ return [
     |
     */
 
-    'classes_auth_card' => '',
+    'classes_auth_card' => 'card-outline card-primary',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => '',
+    'classes_auth_btn' => 'btn-flat btn-primary',
 
     /*
     |--------------------------------------------------------------------------
@@ -188,16 +192,16 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
-    'classes_brand_text' => 'text-version pb-3',
+    'classes_brand' => 'd-flex align-items-center custom-top-sidebar',
+    'classes_brand_text' => 'text-menu pl-2',
     'classes_content_wrapper' => '',
-    'classes_content_header' => '',
+    'classes_content_header' => 'content-header',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
-    'classes_sidebar_nav' => '',
-    'classes_topnav' => '',
-    'classes_topnav_nav' => 'navbar-expand-md navbar-main',
-    'classes_topnav_container' => 'navbar-container',
+    'classes_sidebar' => 'custom-sidebar sidebar-dark-primary elevation-4',
+    'classes_sidebar_nav' => 'custom-nav',
+    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav_nav' => 'navbar-expand custom-navtop',
+    'classes_topnav_container' => 'container',
 
     /*
     |--------------------------------------------------------------------------
@@ -261,22 +265,27 @@ return [
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
     'profile_url' => false,
+    'disable_darkmode_routes' => false,
 
     /*
     |--------------------------------------------------------------------------
-    | Laravel Mix
+    | Laravel Asset Bundling
     |--------------------------------------------------------------------------
     |
-    | Here we can enable the Laravel Mix option for the admin panel.
+    | Here we can enable the Laravel Asset Bundling option for the admin panel.
+    | Currently, the next modes are supported: 'mix', 'vite' and 'vite_js_only'.
+    | When using 'vite_js_only', it's expected that your CSS is imported using
+    | JavaScript. Typically, in your application's 'resources/js/app.js' file.
+    | If you are not using any of these, leave it as 'false'.
     |
     | For detailed instructions you can look the laravel mix section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     |
     */
 
-    'enabled_laravel_mix' => false,
-    'laravel_mix_css_path' => 'css/app.css',
-    'laravel_mix_js_path' => 'js/app.js',
+    'laravel_asset_bundling' => false,
+    'laravel_css_path' => 'css/app.css',
+    'laravel_js_path' => 'js/app.js',
 
     /*
     |--------------------------------------------------------------------------
@@ -294,16 +303,18 @@ return [
         [
             'text' => 'Dashboard',
             'url'  => '/',
-            'icon' => 'fa-solid fa-house',
+            'icon' => 'ti ti-layout-dashboard',
+            'active' => ['/', '/home']
         ],
         [
             'text' => 'settings',
-            'icon' => 'fa-solid fa-gear',
+            'icon' => 'ti ti-settings',
             'can'  => ['list_user', 'list_role'],
             'submenu' => [
                 [
-                    'text' => 'Funcionários',
+                    'text' => 'manage_users',
                     'url'  => 'settings/user',
+                    'icon' => 'ti ti-user-cog',
                     'can'  => ['list_user'],
                 ],
                 [
@@ -311,6 +322,28 @@ return [
                     'url'  => 'settings/role',
                     'can'  => ['list_role'],
                 ]
+            ],
+        ],
+        [
+            'type' => 'navbar-notification',
+            'id' => 'my-language',                    // An ID attribute (required).
+            'icon' => 'ti ti-world',                  // A font awesome icon (required).
+            'url' => 'language/show',                 // The url to access all notifications/elements (required).
+            'topnav_right' => true,                   // Or "topnav => true" to place on the left (required).
+            'dropdown_mode' => true,                  // Enables the dropdown mode (optional).
+        ],
+        [
+            'type' => 'navbar-notification',
+            'id' => 'my-notification',                // An ID attribute (required).
+            'icon' => 'ti ti-bell',                   // A font awesome icon (required).
+            'label_color' => 'danger',                // The initial badge color (optional).
+            'url' => 'notifications/show',            // The url to access all notifications/elements (required).
+            'topnav_right' => true,                   // Or "topnav => true" to place on the left (required).
+            'dropdown_mode' => true,                  // Enables the dropdown mode (optional).
+            'dropdown_flabel' => 'All notifications', // The label for the dropdown footer link (optional).
+            'update_cfg' => [
+                'url' => 'notifications/get',         // The url to periodically fetch new data (optional).
+                'period' => 60,                       // The update period for get new data (in seconds, optional).
             ],
         ],
     ],
@@ -523,6 +556,21 @@ return [
                     'asset' => false,
                     'location' => 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css',
                 ]
+            ],
+        ],
+        'Tabler' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/@tabler/icons@1.74.0/icons-react/dist/index.umd.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css',
+                ],
             ],
         ],
     ],

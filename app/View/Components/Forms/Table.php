@@ -13,15 +13,17 @@ class Table extends Component
      */
 
     public $dropdownFilter;
+    public $dropdownMultipleFilter;
     public $click;
     public $hideColumn;
     public $ordering;
     public $moment;
 
-    public function __construct($dropdownFilter, $click = "", $hideColumn = array(), $ordering = "[[0, 'asc']]", $moment = "DD/MM/YYYY")
+    public function __construct($dropdownFilter = [], $dropdownMultipleFilter = [], $click = "", $hideColumn = array(), $ordering = "[[0, 'asc']]", $moment = "DD/MM/YYYY")
     {
         //
         $this->dropdownFilter = $dropdownFilter;
+        $this->dropdownMultipleFilter = $dropdownMultipleFilter;
         $this->click = $click;
         $this->hideColumn = $hideColumn;
         $this->ordering = $ordering;
