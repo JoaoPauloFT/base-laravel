@@ -5,9 +5,9 @@ return [
     //Login
     'access_message_login' => 'Acessar o sistema de gestão da Loja',
     'email' => 'Email',
-    'digit_email' => 'Digite o email...',
+    'digit_email' => 'Digite o email',
     'password' => 'Senha',
-    'digit_password' => 'Digite a senha...',
+    'digit_password' => 'Digite a senha',
     'access_system' => 'Acessar sistema',
     'totem_management' => 'Gestão Totem v1.0',
 
@@ -78,6 +78,7 @@ return [
     'person_name' => 'Nome da Pessoa',
     'username' => 'Nome de Usuário',
     'yes' => 'Sim',
+    'generate' => 'Gerar',
 
     //Months
     'January' => 'Janeiro',
@@ -102,18 +103,17 @@ return [
     'friday' => 'Sexta',
     'saturday' => 'Sabado',
 
-    //User Web
-    'users_web' => 'Usuários Web',
-    'users_web_description' => 'Listagem e cadastro de usuários que tem acesso a plataforma web do totem',
-    'add_users_web' => 'Cadastrar Usuário Web',
-    'description_users_web' => 'Cadastrar novo usuário web',
-    'edit_users_web' => 'Editar Usuário Web',
-    'description_edit_users_web' => 'Editando usuário com acesso ao web',
-    'title_delete_user_web' => 'Deseja excluir esse usuário?',
-
     //Manage Users
     'manage_users' => 'Gerenciar Usuários',
     'manage_users_description' => 'Visualize e gerencie todos os usuários com acesso à plataforma. Adicione novos usuários, atualize seus detalhes e atribua funções.',
+    'add_users' => 'Adicionar usuários',
+    'description_users' => 'Adicionar novo usuário',
+    'edit_users' => 'Editar Usuário',
+    'description_edit_users' => 'Editando usuário com acesso ao sistema',
+    'title_delete_user' => 'Deseja excluir esse usuário?',
+    'digit_name' => 'Digite o nome',
+    'select_role' => 'Selecione a função',
+    'condition_password' => 'A senha deve conter no mínimo 8 digitos.',
 
     //Modal Edit Password
     'edit_password' => 'Editar senha de acesso',

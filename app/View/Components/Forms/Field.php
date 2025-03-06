@@ -24,13 +24,13 @@ class Field extends Component
     public function __construct($field, $name, $placeholder = "", $type = "text", $mask = "", $customAttributes = "", $formId = "", $value = "")
     {
         $this->field = $field;
-        $this->name = $name;
+        $this->name = html_entity_decode($name);
         $this->type = $type;
-        $this->placeholder = $placeholder;
+        $this->placeholder = html_entity_decode($placeholder);
         $this->mask = $mask;
         $this->customAttributes = $customAttributes;
         $this->formId = $formId;
-        $this->value = $value;
+        $this->value = html_entity_decode($value);
     }
 
     /**

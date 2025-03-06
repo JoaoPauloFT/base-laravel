@@ -2,8 +2,8 @@
 
 <div>
     <x-forms.modal
-        title="{{ $user->id ? 'Editar funcionário' : 'Cadastrar funcionário' }}"
-        description="{{ $user->id ? 'Edita um funcionário cadastrado' : 'Cadastrar um novo funcionário' }}"
+        title="{{ $user->id ? __('message.edit_users') : __('message.add_users') }}"
+        description="{{ $user->id ? __('message.description_edit_users') : __('message.description_users') }}"
         route="{{ $user->id ? route('user.update', $user->id) : route('user.store') }}"
         textButtonConfirm="{{ $user->id ? __('message.edit') : __('message.register') }}"
         idModal="modalForm{{ $user->id }}"
@@ -17,15 +17,15 @@
         @endif
         <x-forms.field
             field="name"
-            name="Nome"
-            placeholder="Digite o nome do funcionário"
+            name="{{ __('message.name') }}"
+            placeholder="{{ __('message.digit_name') }}"
             formId="{{ $user->id }}"
             value="{{ $user->name }}"
         />
         <x-forms.field
             field="email"
             name="Email"
-            placeholder="Digite o email do funcionário"
+            placeholder="{{ __('message.digit_email') }}"
             type="email"
             formId="{{ $user->id }}"
             value="{{ $user->email }}"
@@ -37,8 +37,8 @@
         @endif
         <x-forms.select
             field="role_id"
-            name="Função"
-            placeholder="Selecione uma função"
+            name="{{ __('message.role') }}"
+            placeholder="{{ __('message.select_role') }}"
             :options="$roles"
             mask="search-select"
             formId="{{ $user->id }}"

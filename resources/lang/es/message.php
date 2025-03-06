@@ -114,6 +114,7 @@ return [
     //Manage Users
     'manage_users' => 'Administrar usuarios',
     'manage_users_description' => 'Ver y administrar todos los usuarios con acceso a la plataforma. Añade nuevos usuarios, actualiza sus datos y asigna roles.',
+    'add_users' => 'Agregar usuarios',
 
     //Modal Edit Password
     'edit_password' => 'Editar contraseña de acceso',

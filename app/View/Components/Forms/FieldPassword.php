@@ -11,12 +11,23 @@ class FieldPassword extends Component
      *
      * @return void
      */
-
+    public $colMd;
+    public $field;
+    public $name;
+    public $formId;
+    public $placeholder;
     public $generatePassword;
+    public $conditionPassword;
 
-    public function __construct($generatePassword = false)
+    public function __construct($colMd = "col-md-6", $field = "password", $name = "", $formId = "", $placeholder = "************", $generatePassword = false, $conditionPassword = true)
     {
+        $this->colMd =$colMd;
+        $this->field = $field;
+        $this->name = $name != "" ? $name : __('message.password');
+        $this->formId = $formId;
+        $this->placeholder = $placeholder;
         $this->generatePassword = $generatePassword;
+        $this->conditionPassword = $conditionPassword;
     }
 
     /**

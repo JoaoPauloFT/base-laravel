@@ -320,6 +320,7 @@ return [
                 [
                     'text' => 'Funções',
                     'url'  => 'settings/role',
+                    'icon' => 'ti ti-flag-cog',
                     'can'  => ['list_role'],
                 ]
             ],

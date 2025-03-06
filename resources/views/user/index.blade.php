@@ -49,11 +49,11 @@
                             <div class="divActions">
                                 @can('edit_user')
                                     <a id="changePassword{{ $u->id }}" href="#" data-toggle="modal" data-target="#changePasswordModal{{ $u->id }}" class="btnAction">
-                                        <i class="fa-solid fa-key"></i>
+                                        <i class="ti ti-key"></i>
                                     </a>
                                     {{ \App\Http\Controllers\UserController::edit_password($u->id) }}
                                     <a id="editButton{{ $u->id }}" href="#" data-toggle="modal" data-target="#modalForm{{ $u->id }}" class="btnAction">
-                                        <i class="fa-regular fa-pen-to-square"></i>
+                                        <i class="ti ti-edit"></i>
                                     </a>
                                     {{ \App\Http\Controllers\UserController::edit($u->id) }}
                                 @endcan
@@ -61,7 +61,7 @@
                                     <x-forms.delete-button
                                         route="user.delete"
                                         id="{{ $u->id }}"
-                                        title="Deseja excluir esse funcionário?"
+                                        title="{{ __('message.title_delete_user') }}"
                                     />
                                 @endcan
                             </div>

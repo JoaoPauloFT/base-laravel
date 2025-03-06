@@ -49,12 +49,19 @@
         $('#formSubmit{{ $idItem }} input').each(function() {
             if ($(this).attr('type') !== 'hidden' && $(this).attr('name') !== 'form'){
                 $(this).val('').trigger('change').click();
+                $(this).removeClass("errorField");
             }
         });
 
         // Dispara um clique no select para limpar seu valor
         $('#formSubmit{{ $idItem }} select').each(function() {
             $(this).val('').trigger('change').click();
+            $('span.errorField').removeClass('errorField');
+        });
+
+        //Remove a mensagem do erro dos inputs
+        $("#formSubmit{{ $idItem }} p[class='messageError']").each(function(){
+            $(this).remove();
         });
     }
 

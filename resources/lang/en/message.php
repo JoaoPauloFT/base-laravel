@@ -114,6 +114,7 @@ return [
     //Manage Users
     'manage_users' => 'Manage users',
     'manage_users_description' => 'View and manage all users with access to the platform. Add new users, update their details and assign roles.',
+    'add_users' => 'Add users',
 
     //Modal Edit Password
     'edit_password' => 'Edit access password',
