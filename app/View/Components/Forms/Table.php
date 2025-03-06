@@ -15,19 +15,37 @@ class Table extends Component
     public $dropdownFilter;
     public $dropdownMultipleFilter;
     public $click;
-    public $hideColumn;
     public $ordering;
     public $moment;
+    public $customColumns;
+    public $serverSide;
+    public $columnsSide;
+    public $routes;
+    public $hasExport;
 
-    public function __construct($dropdownFilter = [], $dropdownMultipleFilter = [], $click = "", $hideColumn = array(), $ordering = "[[0, 'asc']]", $moment = "DD/MM/YYYY")
+    public function __construct($dropdownFilter = [], $dropdownMultipleFilter = [], $click = "", $hideColumn = [], $ordering = "[[0, 'asc']]", $moment = "DD/MM/YYYY", $widthColumns = [], $notOrderColumns = [], $serverSide = false, $columnsSide = [], $routes = "", $hasExport = true)
     {
         //
         $this->dropdownFilter = $dropdownFilter;
         $this->dropdownMultipleFilter = $dropdownMultipleFilter;
         $this->click = $click;
-        $this->hideColumn = $hideColumn;
         $this->ordering = $ordering;
         $this->moment = $moment;
+        $columns = [];
+        foreach ($hideColumn as $column) {
+            $columns[$column] = "visible: false, ";
+        }
+        foreach ($widthColumns as $key => $width) {
+            $columns[$key] = ($columns[$key] ?? "") . 'width: "'. $width .'px", ';
+        }
+        foreach ($notOrderColumns as $key => $width) {
+            $columns[$key] = ($columns[$key] ?? "") . "orderable: false, ";
+        }
+        $this->customColumns = $columns;
+        $this->serverSide = $serverSide;
+        $this->columnsSide = $columnsSide;
+        $this->routes = $routes;
+        $this->hasExport = $hasExport;
     }
 
     /**

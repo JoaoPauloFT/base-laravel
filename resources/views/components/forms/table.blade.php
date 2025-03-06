@@ -22,6 +22,19 @@
 
             let table = new DataTable('#myTable', {
                 responsive: true,
+                @if($serverSide)
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route($routes.'.data') }}',
+                    data: function (d) {
+                        d.status = $('#filter-status').val();
+                        $('#filterTable > select').each(function(index) {
+                            d[$(this).attr('name')] = $(this).val();
+                        });
+                    }
+                },
+                @endif
                 lengthMenu: [ [10, 25, 50, -1], ["{{ __('message.show') }} 10", "{{ __('message.show') }} 25", "{{ __('message.show') }} 50", "Todos"] ],
                 language: {
                     search: "",
@@ -39,17 +52,43 @@
                     decimal: ",",
                     thousands: "."
                 },
+                @if($dropdownMultipleFilter || $dropdownFilter)
                 dom: '<"header"fBr><"selects">"t<"bottom"<"lbottom"li>p>',
+                @else
+                dom: '<"header"fBr>"t<"bottom"<"lbottom"li>p>',
+                @endif
                 order: {!! $ordering !!},
+                autoWidth: false,
+                @if($columnsSide)
+                columns: [
+                        @foreach($columnsSide as $key => $c)
+                    { data: '{{ $c }}', name: '{{ $c }}' },
+                        @endforeach
+                    { data: 'action', name: 'action', orderable: false, searchable: false }
+                ],
+                @endif
                 columnDefs: [
-                        @foreach($hideColumn as $column)
+                        @foreach($customColumns as $key => $column)
                     {
-                        target: {{ $column }},
-                        visible: false,
+                        target: {{ $key }},
+                        {!! $column !!}
                     },
-                    @endforeach
+                        @endforeach
+                    {
+                        target: -1,
+                        orderable: false,
+                    },
                 ],
                 buttons: [
+                        @if($hasExport)
+                        @if($serverSide)
+                    {
+                        text: '<i class="ti ti-file-arrow-right"></i><span> {{ __('message.export') }} </span>',
+                        action: function () {
+                            window.location.href = '{{ route($routes.'.export') }}';
+                        }
+                    },
+                        @else
                     {
                         extend: 'excel',
                         text: '<i class="ti ti-file-arrow-right"></i><span> {{ __('message.export') }} </span>',
@@ -57,6 +96,8 @@
                             columns: columns
                         }
                     },
+                        @endif
+                        @endif
                     {
                         extend: 'colvis',
                         text: '<i class="ti ti-settings"></i><span> {{ __('message.columns') }} </span>',
@@ -66,12 +107,16 @@
                     }
                 ],
                 initComplete: function () {
+                    @if(!$serverSide)
+                    @if($dropdownMultipleFilter || $dropdownFilter)
                     let span = document.createElement('span');
                     span.setAttribute("class", 'filter-span');
                     span.innerText = '{{ __("message.filters") }}';
                     document.getElementsByClassName("selects")[0].appendChild(span);
+                    @endif
 
-                    this.api()
+                        @if($dropdownMultipleFilter)
+                        this.api()
                         .columns({{ Illuminate\Support\Js::from($dropdownMultipleFilter) }})
                         .every(function () {
                             let column = this;
@@ -121,8 +166,10 @@
                                     select.add(new Option(d));
                                 });
                         });
+                    @endif
 
-                    this.api()
+                        @if($dropdownFilter)
+                        this.api()
                         .columns({{ Illuminate\Support\Js::from($dropdownFilter) }})
                         .every(function () {
                             let column = this;
@@ -166,28 +213,37 @@
                                     select.add(new Option(d));
                                 });
                         });
+                    @endif
+                    @else
+                    let template = document.querySelector('#filterTemplate').content.cloneNode(true);
+                    document.querySelector('.selects').appendChild(template);
+                    $('.select-filter').select2();
+
+                    $('.select-filter').on('change', function () {
+                        table.ajax.reload();
+
+                        if($('.btnLimpar').length == 0) {
+                            var btnLimpar = "<button type='button' class='btnLimpar'>{{ __('message.clear') }}</button>";
+                            $(".selects").append(btnLimpar);
+
+                            $('.btnLimpar').on('click', function () {
+                                $('.select-filter').val('').trigger('change');
+                                $(this).remove();
+                            });
+                        }
+                    });
+                    @endif
                 },
+                @if($click)
                 drawCallback: function() {
-                    $('.tooltip-status').tooltip({
-                        container: $(this).parent(),
-                        boundary: 'window',
-                        placement: 'top'
-                    });
-                    $('.tooltip-receipt').tooltip({
-                        container: $(this).parent(),
-                        template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner large"></div></div>',
-                        placement: 'left',
-                        html: true,
-                    });
-                    @if($click)
                     $(".clickable").click(function(e) {
                         let id = $(this).attr('data-id');
 
                         if($(e.target).is("td"))
                             location.href = '{{ $click }}/' + id;
                     });
-                    @endif
                 }
+                @endif
             });
 
             const elements = document.querySelectorAll('.dt-button-down-arrow');

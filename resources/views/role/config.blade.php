@@ -8,15 +8,15 @@
 @section('title', 'Funções')
 
 @section('content_header')
-    <div class="title mb-3">
-        <h1>Permissões de {{ $role->name }}</h1>
-        <p>Ative ou desative as permissões pertinentes a função: {{ $role->name }}</p>
+    <div class="title mb-4">
+        <h1>{{ __('message.permissions_of')." ".$role->name }}</h1>
+        <p>{{ __('message.permissions_config_description')." ".$role->name }}</p>
     </div>
     @can('create_role')
-        <div class="actions mb-3">
+        <div class="actions mb-4">
             <a id="createButton" href="#">
-                <i class="fa-solid fa-floppy-disk"></i>
-                Salvar a permissão
+                <i class="ti ti-device-floppy"></i>
+                {{ __('message.save_permission') }}
             </a>
         </div>
     @endcan
@@ -38,7 +38,7 @@
                             <div class="card-permission">
                             <h2>{{ __('message.'.$first_view) }}</h2>
                         @endif
-                        <p><input type="checkbox" name="permission[]" value="{{ $p->id }}" {{ $my_permissions->contains($p->code) ? "checked" : "" }}><span>{{ $p->name }}</span></p>
+                        <p><input type="checkbox" name="permission[]" value="{{ $p->id }}" {{ $my_permissions->contains($p->code) ? "checked" : "" }}><span>{{ __('message.'.$p->code) }}</span></p>
                     @endforeach
                 </div>
             </div>

@@ -78,6 +78,14 @@ return [
     'person_name' => 'Nombre de persona',
     'username' => 'Nombre de usuario',
     'yes' => 'Sí',
+    'generate' => 'Generar',
+    'description' => 'Descripción',
+    'updated_at' => 'Actualizado en',
+
+    //Language
+    'en' => 'Inglés',
+    'pt-br' => 'Portugués',
+    'es' => 'Español',
 
     //Months
     'January' => 'Enero',
@@ -102,23 +110,37 @@ return [
     'friday' => 'Viernes',
     'saturday' => 'Sábado',
 
-    //User Web
-    'users_web' => 'Usuarios web',
-    'users_web_description' => 'Lista y registro de usuarios que tienen acceso a la plataforma web totem',
-    'add_users_web' => 'Registrar usuario web',
-    'description_users_web' => 'Registrar nuevo usuario web',
-    'edit_users_web' => 'Editar usuario web',
-    'description_edit_users_web' => 'Editando usuario con acceso web',
-    'title_delete_user_web' => '¿Quieres eliminar este usuario?',
-
     //Manage Users
     'manage_users' => 'Administrar usuarios',
     'manage_users_description' => 'Ver y administrar todos los usuarios con acceso a la plataforma. Añade nuevos usuarios, actualiza sus datos y asigna roles.',
     'add_users' => 'Agregar usuarios',
+    'description_users' => 'Agregar nuevo usuario',
+    'edit_users' => 'Editar Usuario',
+    'description_edit_users' => 'Editar un usuario con acceso al sistema',
+    'title_delete_user' => '¿Desea eliminar este usuario?',
+    'digit_name' => 'Ingrese el nombre',
+    'select_role' => 'Seleccione el rol',
+    'condition_password' => 'La contraseña debe contener al menos 8 dígitos.',
 
     //Modal Edit Password
     'edit_password' => 'Editar contraseña de acceso',
     'edit_description_password' => 'Editando la contraseña de acceso del usuario',
+
+    //Manage Roles
+    'manage_roles' => 'Administrar functiones',
+    'manage_roles_description' => 'Visualice y administre todos los functiones de la plataforma. Agregue nuevos functiones, actualice sus detalles y configure sus permisos.',
+    'add_roles' => 'Agregar functiones',
+    'description_roles' => 'Agregar nuevo function',
+    'edit_roles' => 'Editar function',
+    'description_edit_roles' => 'Editar un function del sistema',
+    'title_delete_role' => '¿Desea eliminar este function?',
+    'digit_description' => 'Ingrese la descripción',
+    'base_role' => 'Rol base',
+
+    //Config Roles
+    'permissions_of' => 'Permisos de',
+    'permissions_config_description' => 'Habilitar o deshabilitar los permisos relevantes para el function:',
+    'save_permission' => 'Guardar permiso',
 
     //Datatable
     'search_list' => 'Buscar en la lista',
@@ -137,6 +159,16 @@ return [
     'columns' => 'columnas',
     'filters' => 'Filtros:',
 
-    //Permissions
+    //Permissions - Modules
     'role' => 'Function',
+
+    //Permissions - Items
+    'list_user' => 'Puede ver la lista de usuarios',
+    'create_user' => 'Puede crear un nuevo usuario',
+    'edit_user' => 'Puede editar usuarios',
+    'delete_user' => 'Puede eliminar usuarios',
+    'list_role' => 'Puede ver la lista de functiones',
+    'create_role' => 'Puede crear un nuevo function',
+    'edit_role' => 'Puede editar functiones',
+    'delete_role' => 'Puede eliminar functiones',
 ];

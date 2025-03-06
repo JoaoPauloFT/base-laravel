@@ -25,6 +25,7 @@ Route::post('/settings/user/store', [App\Http\Controllers\UserController::class,
 Route::delete('/settings/user/delete/{id}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete')->middleware('can:delete_user');
 Route::put('/settings/user/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update')->middleware('can:edit_user');
 Route::put('/settings/user/update_password/{id}', [App\Http\Controllers\UserController::class, 'update_password'])->name('user.update_password')->middleware('can:edit_user');
+Route::get('/settings/user/change_language/{id}', [App\Http\Controllers\UserController::class, 'change_language'])->name('user.change_language');
 
 // ROLE
 Route::get('/settings/role', [App\Http\Controllers\RolesController::class, 'index'])->name('role')->middleware('can:list_role');

@@ -12,4 +12,5 @@ return [
     'visit'                 => 'Visitas',
     'volunteer'             => 'Voluntarios',
     'manage_users'          => 'Administrar usuarios',
+    'manage_roles'          => 'Administrar functiones',
 ];

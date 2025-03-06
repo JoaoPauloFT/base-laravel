@@ -316,12 +316,14 @@ return [
                     'url'  => 'settings/user',
                     'icon' => 'ti ti-user-cog',
                     'can'  => ['list_user'],
+                    'active' => ['/settings/user*']
                 ],
                 [
-                    'text' => 'Funções',
+                    'text' => 'manage_roles',
                     'url'  => 'settings/role',
                     'icon' => 'ti ti-flag-cog',
                     'can'  => ['list_role'],
+                    'active' => ['/settings/role*']
                 ]
             ],
         ],
@@ -330,6 +332,11 @@ return [
             'id' => 'my-language',                    // An ID attribute (required).
             'icon' => 'ti ti-world',                  // A font awesome icon (required).
             'url' => 'language/show',                 // The url to access all notifications/elements (required).
+            'languages' => [
+                'en' => 'English',
+                'es' => 'Español',
+                'pt-br' => 'Português',
+            ],
             'topnav_right' => true,                   // Or "topnav => true" to place on the left (required).
             'dropdown_mode' => true,                  // Enables the dropdown mode (optional).
         ],

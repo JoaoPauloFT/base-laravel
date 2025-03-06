@@ -1,7 +1,7 @@
 <div>
     <x-forms.modal
-        title="{{ $role->id ? 'Editar função' : 'Cadastrar função' }}"
-        description="{{ $role->id ? 'Edita uma função cadastrado' : 'Cadastrar uma nova função' }}"
+        title="{{ $role->id ? __('message.edit_roles') : __('message.add_roles') }}"
+        description="{{ $role->id ? __('message.description_edit_roles') : __('message.description_roles') }}"
         route="{{ $role->id ? route('role.update', $role->id) : route('role.store') }}"
         textButtonConfirm="{{ $role->id ? __('message.edit') : __('message.register') }}"
         idModal="modalForm{{ $role->id }}"
@@ -12,23 +12,23 @@
         @endif
         <x-forms.field
             field="name"
-            name="Nome"
-            placeholder="Digite o nome"
+            name="{{ __('message.name') }}"
+            placeholder="{{ __('message.digit_name') }}"
             formId="{{ $role->id }}"
             value="{{ $role->name }}"
         />
         <x-forms.field
             field="description"
-            name="Descrição"
-            placeholder="Digite a descrição"
+            name="{{ __('message.description') }}"
+            placeholder="{{ __('message.digit_description') }}"
             formId="{{ $role->id }}"
             value="{{ $role->description }}"
         />
         @if(!$role->id)
             <x-forms.select
                 field="role_id"
-                name="Função base"
-                placeholder="Selecione uma função"
+                name="{{ __('message.base_role') }}"
+                placeholder="{{ __('message.select_role') }}"
                 :options="$roles"
                 mask="search-select"
                 formId="{{ $role->id }}"

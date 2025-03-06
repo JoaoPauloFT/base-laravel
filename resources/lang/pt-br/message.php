@@ -79,6 +79,13 @@ return [
     'username' => 'Nome de Usuário',
     'yes' => 'Sim',
     'generate' => 'Gerar',
+    'description' => 'Descrição',
+    'updated_at' => 'Atualizado em',
+
+    //Language
+    'en' => 'Inglês',
+    'pt-br' => 'Português',
+    'es' => 'Espanhol',
 
     //Months
     'January' => 'Janeiro',
@@ -109,7 +116,7 @@ return [
     'add_users' => 'Adicionar usuários',
     'description_users' => 'Adicionar novo usuário',
     'edit_users' => 'Editar Usuário',
-    'description_edit_users' => 'Editando usuário com acesso ao sistema',
+    'description_edit_users' => 'Editar um usuário com acesso ao sistema',
     'title_delete_user' => 'Deseja excluir esse usuário?',
     'digit_name' => 'Digite o nome',
     'select_role' => 'Selecione a função',
@@ -118,6 +125,22 @@ return [
     //Modal Edit Password
     'edit_password' => 'Editar senha de acesso',
     'edit_description_password' => 'Editando senha de acesso do usuário',
+
+    //Manage Roles
+    'manage_roles' => 'Gerenciar funções',
+    'manage_roles_description' => 'Visualize e gerencie todos as funções da plataforma. Adicione novas funções, atualize seus detalhes e configure suas permissões.',
+    'add_roles' => 'Adicionar funções',
+    'description_roles' => 'Adicionar nova função',
+    'edit_roles' => 'Editar função',
+    'description_edit_roles' => 'Editar uma função do sistema',
+    'title_delete_role' => 'Deseja excluir essa função?',
+    'digit_description' => 'Digite a descrição',
+    'base_role' => 'Função base',
+
+    //Config Roles
+    'permissions_of' => 'Permissões de',
+    'permissions_config_description' => 'Ative ou desative as permissões pertinentes a função:',
+    'save_permission' => 'Salvar permissões',
 
     //Datatable
     'search_list' => 'Pesquisar na lista',
@@ -136,6 +159,16 @@ return [
     'columns' => 'Colunas',
     'filters' => 'Filtros:',
 
-    //Permissions
+    //Permissions - Modules
     'role' => 'Funções',
+
+    //Permissions - Items
+    'list_user' => 'Pode ver a lista de usuários',
+    'create_user' => 'Pode criar um novo usuário',
+    'edit_user' => 'Pode editar usuários',
+    'delete_user' => 'Pode deletar usuários',
+    'list_role' => 'Pode ver a lista de funções',
+    'create_role' => 'Pode criar um novo função',
+    'edit_role' => 'Pode editar funções',
+    'delete_role' => 'Pode deletar funções',
 ];

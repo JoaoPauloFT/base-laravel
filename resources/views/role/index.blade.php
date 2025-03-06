@@ -6,18 +6,18 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
-@section('title', 'Funções')
+@section('title', __('message.manage_roles'))
 
 @section('content_header')
-    <div class="title mb-3">
-        <h1>Funções</h1>
-        <p>Listagem e cadastro de funções de funcionários no sistema</p>
+    <div class="title mb-4">
+        <h1>{{ __('message.manage_roles') }}</h1>
+        <p>{{ __('message.manage_roles_description') }}</p>
     </div>
     @can('create_role')
-        <div class="actions mb-3">
+        <div class="actions mb-4">
             <a id="createButton" href="#" data-toggle="modal" data-target="#modalForm">
-                <i class="fa-solid fa-plus br"></i>
-                Cadastrar funções
+                <i class="ti ti-library-plus"></i>
+                {{ __('message.add_roles') }}
             </a>
         </div>
     @endcan
@@ -25,12 +25,12 @@
 
 @section('content')
     <div class="body">
-        <x-forms.table :dropdownFilter="[]">
+        <x-forms.table>
             <thead>
             <tr>
-                <th>Função</th>
-                <th>Descrição</th>
-                <th class="center">Atualizado em</th>
+                <th>{{ __('message.function') }}</th>
+                <th>{{ __('message.description') }}</th>
+                <th class="center">{{ __('message.updated_at') }}</th>
                 @if (Auth::user()->can('edit_role') || Auth::user()->can('delete_role'))
                     <th class="center">{{ __('message.actions') }}</th>
                 @endif
@@ -47,10 +47,10 @@
                             <div class="divActions">
                                 @can('edit_role')
                                     <a href="{!! asset('settings/role/'.$r->id) !!}" class="btnAction">
-                                        <i class="fa-solid fa-sliders"></i>
+                                        <i class="ti ti-adjustments-alt"></i>
                                     </a>
                                     <a id="editButton{{ $r->id }}" href="#" data-toggle="modal" data-target="#modalForm{{ $r->id }}" class="btnAction">
-                                        <i class="fa-regular fa-pen-to-square"></i>
+                                        <i class="ti ti-edit"></i>
                                     </a>
                                     {{ \App\Http\Controllers\RolesController::edit($r->id) }}
                                 @endcan
@@ -58,7 +58,7 @@
                                     <x-forms.delete-button
                                         route="role.delete"
                                         id="{{ $r->id }}"
-                                        title="Deseja excluir essa função?"
+                                        title="{{ __('message.title_delete_role') }}"
                                     />
                                 @endcan
                             </div>

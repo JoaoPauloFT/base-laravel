@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('deleted')->default(0);
             $table->boolean('isAdmin')->default(false);
+            $table->enum('language', ['en', 'es', 'pt-br'])->default('en');
             $table->rememberToken();
             $table->timestamps();
         });

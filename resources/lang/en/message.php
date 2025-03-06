@@ -78,6 +78,14 @@ return [
     'person_name' => 'Person Name',
     'username' => 'Username',
     'yes' => 'Yes',
+    'generate' => 'Generate',
+    'description' => 'Description',
+    'updated_at' => 'Updated at',
+
+    //Language
+    'en' => 'English',
+    'pt-br' => 'Português',
+    'es' => 'Español',
 
     //Months
     'January' => 'January',
@@ -102,23 +110,37 @@ return [
     'friday' => 'Friday',
     'saturday' => 'Saturday',
 
-    //User Web
-    'users_web' => 'Web Users',
-    'users_web_description' => 'List and registration of users who have access to the totem web platform',
-    'add_users_web' => 'Register Web User',
-    'description_users_web' => 'Register new web user',
-    'edit_users_web' => 'Edit Web User',
-    'description_edit_users_web' => 'Editing user with web access',
-    'title_delete_user_web' => 'Do you want to delete this user?',
-
     //Manage Users
     'manage_users' => 'Manage users',
     'manage_users_description' => 'View and manage all users with access to the platform. Add new users, update their details and assign roles.',
     'add_users' => 'Add users',
+    'description_users' => 'Add new user',
+    'edit_users' => 'Edit User',
+    'description_edit_users' => 'Edit a user with system access',
+    'title_delete_user' => 'Do you want to delete this user?',
+    'digit_name' => 'Enter the name',
+    'select_role' => 'Select role',
+    'condition_password' => 'The password must contain at least 8 digits.',
 
     //Modal Edit Password
     'edit_password' => 'Edit access password',
     'edit_description_password' => 'Editing user access password',
+
+    //Manage Roles
+    'manage_roles' => 'Manage roles',
+    'manage_roles_description' => 'View and manage all platform roles. Add new roles, update their details, and configure their permissions.',
+    'add_roles' => 'Add roles',
+    'description_roles' => 'Add new role',
+    'edit_roles' => 'Edit role',
+    'description_edit_roles' => 'Edit a system role',
+    'title_delete_role' => 'Do you want to delete this role?',
+    'digit_description' => 'Enter the description',
+    'base_role' => 'Base role',
+
+    //Config Roles
+    'permissions_of' => 'Permissions of',
+    'permissions_config_description' => 'Enable or disable the permissions relevant to the role:',
+    'save_permission' => 'Save permission',
 
     //Datatable
     'search_list' => 'Search in list',
@@ -137,6 +159,16 @@ return [
     'columns' => 'Columns',
     'filters' => 'Filters:',
 
-    //Permissions
-    'role' => 'Funciones',
+    //Permissions - Modules
+    'role' => 'Role',
+
+    //Permissions - Items
+    'list_user' => 'Can view the list of users',
+    'create_user' => 'Can create a new user',
+    'edit_user' => 'Can edit users',
+    'delete_user' => 'Can delete users',
+    'list_role' => 'Can view the list of roles',
+    'create_role' => 'Can create a new role',
+    'edit_role' => 'Can edit roles',
+    'delete_role' => 'Can delete roles',
 ];

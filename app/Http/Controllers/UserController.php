@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -105,5 +106,13 @@ class UserController extends Controller
         $user->save();
 
         return redirect()->route('user');
+    }
+
+    public function change_language($locale)
+    {
+        $user = Auth::user();
+        $user->language = $locale;
+        $user->save();
+        return back();
     }
 }
