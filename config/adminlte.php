@@ -570,14 +570,9 @@ return [
             'active' => true,
             'files' => [
                 [
-                    'type' => 'js',
-                    'asset' => false,
-                    'location' => 'https://cdn.jsdelivr.net/npm/@tabler/icons@1.74.0/icons-react/dist/index.umd.min.js',
-                ],
-                [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css',
+                    'location' => 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css',
                 ],
             ],
         ],
