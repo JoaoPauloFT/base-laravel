@@ -81,6 +81,13 @@ return [
     'generate' => 'Gerar',
     'description' => 'Descrição',
     'updated_at' => 'Atualizado em',
+    'save_changes' => 'Salvar alterações',
+    'image' => 'Imagem',
+    'close' => 'Fechar',
+    'crop' => 'Cortar',
+    'crop_image' => 'Cortar imagem',
+    'adjust_and_crop_image' => 'Cortar e alterar imagem',
+    'image_formats' => 'Carregue imagens em formato PNG, JPG, JPEG ou WEBP',
 
     //Language
     'en' => 'Inglês',
@@ -121,6 +128,9 @@ return [
     'digit_name' => 'Digite o nome',
     'select_role' => 'Selecione a função',
     'condition_password' => 'A senha deve conter no mínimo 8 digitos.',
+    'change_password' => 'Alterar senha',
+    'generate_password' => 'Gerar',
+    'password_confirmation' => 'Confirmar senha',
 
     //Modal Edit Password
     'edit_password' => 'Editar senha de acesso',

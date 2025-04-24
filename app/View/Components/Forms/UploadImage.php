@@ -19,8 +19,9 @@ class UploadImage extends Component
     public $maxSize;
     public $completeFunction;
     public $field;
+    public $path;
 
-    public function __construct($idModal, $width = 0, $height = 0, $maxSize = 0, $field = "file", $idItem = '', $completeFunction = '')
+    public function __construct($idModal, $width = 0, $height = 0, $maxSize = 0, $field = "file", $idItem = '', $completeFunction = '', $path = 'images/temp')
     {
         $this->width = $width;
         $this->height = $height;
@@ -28,6 +29,7 @@ class UploadImage extends Component
         $this->field = $field;
         $this->idItem = $idItem;
         $this->maxSize = $maxSize;
+        $this->path = $path;
         if ($completeFunction)
             $this->completeFunction = $completeFunction;
         else

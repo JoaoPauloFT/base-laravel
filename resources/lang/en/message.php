@@ -81,6 +81,13 @@ return [
     'generate' => 'Generate',
     'description' => 'Description',
     'updated_at' => 'Updated at',
+    'save_changes' => 'Save changes',
+    'image' => 'Image',
+    'close' => 'Close',
+    'crop' => 'Crop',
+    'crop_image' => 'Crop image',
+    'adjust_and_crop_image' => 'Adjust and Crop image',
+    'image_formats' => 'Upload images in PNG, JPG, JPEG or WEBP format',
 
     //Language
     'en' => 'English',
@@ -121,6 +128,9 @@ return [
     'digit_name' => 'Enter the name',
     'select_role' => 'Select role',
     'condition_password' => 'The password must contain at least 8 digits.',
+    'change_password' => 'Change password',
+    'generate_password' => 'Generate',
+    'password_confirmation' => 'Password confirmation',
 
     //Modal Edit Password
     'edit_password' => 'Edit access password',

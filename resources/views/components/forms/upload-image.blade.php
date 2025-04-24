@@ -98,7 +98,7 @@
                 formData.append('width', {{ $width }});
                 formData.append('height', {{ $height }});
                 formData.append('maxSize', {{ $maxSize }});
-                formData.append('path', 'images/temp');
+                formData.append('path', '{{ $path }}');
 
                 $.ajax('{{ route('FileUpload') }}', {
                     method: 'POST',

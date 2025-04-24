@@ -26,7 +26,7 @@
                             @if($generatePassword)
                                 <button id="generatePassword{{ $idItem }}" type="button" class="secondary-button">
                                     <i class="ti ti-key"></i>
-                                    <p>{{ __('message.generate_password') }}</p>
+                                    <p class="mb-0">{{ __('message.generate_password') }}</p>
                                 </button>
                             @endif
                         </div>

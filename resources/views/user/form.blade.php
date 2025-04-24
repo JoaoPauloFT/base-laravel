@@ -8,9 +8,8 @@
         textButtonConfirm="{{ $user->id ? __('message.edit') : __('message.register') }}"
         idModal="modalForm{{ $user->id }}"
         idItem="{{ $user->id }}"
-        titleImage="{{ __('message.upload_image_text') }}"
-        width="200"
-        height="200"
+        iconButtonConfirm="{{$user->id ? 'ti ti-checks' : ''}}"
+        cancelAction="{{$user->id ? '' : ' clean_modal()'}}"
     >
         @if($user->id)
             @method('PUT')
@@ -45,15 +44,38 @@
             value="{{ $user->role_id }}"
         />
         <input id="image{{ $user->id }}" name="image" type="hidden" value="{{ old('form') == 'formSubmit'.$user->id ? old('image') : $user->image }}">
+        <div>
+            <label for="file{{ $user->id }}">{{ __('message.image') }}</label>
+            <div>
+                <div class="drag-area{{ $user->id }} divImage {{ $errors->has('image') && old('form') == 'formSubmit'.$user->id ? 'error' : '' }}">
+                    <i class="ti ti-upload"></i>
+                    <span>{{ __('message.upload_image_description') }}</span>
+                </div>
+                <input id="input-drag{{ $user->id }}" class="input-drag{{ $user->id }}" type="file" accept="image/png, image/jpeg, image/webp" hidden>
+            </div>
+            <p class="subdesc subdescription{{ $user->id }} {{ $errors->has('image') && old('form') == 'formSubmit'.$user->id ? 'messageError' : '' }}">{{ $errors->has('image') && old('form') == 'formSubmit'.$user->id ? ucfirst($errors->first('image')) : __('message.image_formats') }}</p>
+        </div>
+        <div id="preview-files{{ $user->id }}" class="preview-files">
+            @if(old('image') || $user->image)
+                <div class="img-preview">
+                    <img src="{{ asset(old('image') ?? $user->image) }}" alt="{{ old('image') ?? $user->image }}">
+                </div>
+            @endif
+        </div>
     </x-forms.modal>
+    <x-forms.upload-image
+        width="200"
+        height="200"
+        idItem="{{ $user->id }}"
+        idModal="modalForm{{ $user->id }}"
+        completeFunction="completeUploadSignature{{ $user->id }}"
+        path="images/avatar"
+    />
 </div>
 
-@if($user->id)
-    <script>
-        window.addEventListener('load', function () {
-        @if($user->image)
-            document.querySelector(".drag-area{{ $user->id }}").innerHTML = "<img class='preview-img' src='{{ asset($user->image) }}' />";
-        @endif
-        });
-    </script>
-@endif
+<script>
+    function completeUploadSignature{{ $user->id }}(response) {
+        $('#preview-files{{ $user->id }}').html("<div class='img-preview'><img class='preview-img' src='" + response.data['locale'] + "' alt='" + response.data['name'] + "' /></div>");
+        document.querySelector('#image{{ $user->id }}').value = response.data['path'];
+    }
+</script>

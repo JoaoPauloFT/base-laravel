@@ -76,7 +76,7 @@
     }
 
     function clean_modal{{ $idItem }}(){
-        $('#formSubmit{{ $idItem }} input:not(.signature-dropbox)').each(function() {
+        $('#formSubmit{{ $idItem }} input:not([type="file"])').each(function() {
             if ($(this).attr('type') !== 'hidden' && $(this).attr('type') !== 'radio' && $(this).attr('name') !== 'form'){
                 $(this).val('').trigger('change').click();
                 $(this).removeClass("errorField"); //Remove a border-color do erro

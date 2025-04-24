@@ -197,7 +197,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => 'content-header',
     'classes_content' => '',
-    'classes_sidebar' => 'custom-sidebar sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'custom-sidebar sidebar-dark-primary elevation-4 position-fixed',
     'classes_sidebar_nav' => 'custom-nav',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand custom-navtop',
@@ -445,6 +445,16 @@ return [
                     'location' => 'https://cdn.datatables.net/plug-ins/2.0.0/sorting/datetime-moment.js',
                 ],
                 [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/fixedcolumns/5.0.4/js/dataTables.fixedColumns.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.datatables.net/fixedcolumns/5.0.4/js/fixedColumns.dataTables.js',
+                ],
+                [
                     'type' => 'css',
                     'asset' => false,
                     'location' => 'https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css',
@@ -458,6 +468,26 @@ return [
                     'type' => 'css',
                     'asset' => false,
                     'location' => 'https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css',
+                ],
+            ],
+        ],
+        'TempusDominusBs4' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
                 ],
             ],
         ],
@@ -542,8 +572,18 @@ return [
                 [
                     'type' => 'js',
                     'asset' => true,
-                    'location' => 'js/cropbox-min.js',
-                ]
+                    'location' => 'js/cropper.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'js/cropper.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'js/jquery-cropper.min.js',
+                ],
             ],
         ],
         'FullCalendar' => [
@@ -573,6 +613,41 @@ return [
                     'type' => 'css',
                     'asset' => false,
                     'location' => 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css',
+                ],
+            ],
+        ],
+        'DateRangePicker' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/momentjs/latest/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css',
+                ]
+            ],
+        ],
+        'JqueryScrollbar' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.min.css',
                 ],
             ],
         ],
