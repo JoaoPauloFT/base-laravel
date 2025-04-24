@@ -20,8 +20,11 @@ class Field extends Component
     public $customAttributes;
     public $formId;
     public $value;
+    public $customDate;
+    public $onLoad;
+    public $oldValue;
 
-    public function __construct($field, $name, $placeholder = "", $type = "text", $mask = "", $customAttributes = "", $formId = "", $value = "")
+    public function __construct($field, $name, $placeholder = "", $type = "text", $mask = "", $customAttributes = "", $formId = "", $value = "", $customDate = "", $onLoad = true, $oldValue=false)
     {
         $this->field = $field;
         $this->name = html_entity_decode($name);
@@ -31,6 +34,9 @@ class Field extends Component
         $this->customAttributes = $customAttributes;
         $this->formId = $formId;
         $this->value = html_entity_decode($value);
+        $this->customDate = $customDate;
+        $this->onLoad = $onLoad;
+        $this->oldValue = $oldValue;
     }
 
     /**

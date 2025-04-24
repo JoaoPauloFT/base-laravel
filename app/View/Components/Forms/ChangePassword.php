@@ -17,8 +17,9 @@ class ChangePassword extends Component
     public $idItem;
     public $restrictUserPassword;
     public $generatePassword;
+    public $cancelAction;
 
-    public function __construct($title, $description, $route, $idItem = '', $restrictUserPassword = false, $generatePassword = false)
+    public function __construct($title, $description, $route, $idItem = '', $restrictUserPassword = false, $generatePassword = false, $cancelAction='')
     {
         $this->title = $title;
         $this->description = $description;
@@ -26,6 +27,7 @@ class ChangePassword extends Component
         $this->idItem = $idItem;
         $this->restrictUserPassword = $restrictUserPassword;
         $this->generatePassword = $generatePassword;
+        $this->cancelAction = $cancelAction;
     }
 
     /**

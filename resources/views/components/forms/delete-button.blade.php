@@ -1,13 +1,13 @@
-<form id="formDelete{{ $id }}" action="{{route($route, [$id, $secondParam])}}" method="POST">
+<form id="formDelete{{ $formId }}{{ $id }}" action="{{route($route, [$id, $secondParam])}}" method="POST">
     @csrf()
     @method('DELETE')
-    <button id="submitDelete{{ $id }}" type="button" class="btnAction">
-        <i class="ti ti-x"></i>
+    <button id="submitDelete{{ $formId }}{{ $id }}" type="button" class="btnAction">
+        <i class="ti ti-trash"></i>
     </button>
 </form>
 
 <script>
-    document.getElementById('submitDelete{{ $id }}').addEventListener('click', function () {
+    document.getElementById('submitDelete{{ $formId }}{{ $id }}').addEventListener('click', function () {
         Swal.fire({
             title: '{{ $title }}',
             text: '{{ __('message.dont_revert_operation') }}',
@@ -23,7 +23,7 @@
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                $('#formDelete{{ $id }}').submit();
+                $('#formDelete{{ $formId }}{{ $id }}').submit();
             }
         });
     })

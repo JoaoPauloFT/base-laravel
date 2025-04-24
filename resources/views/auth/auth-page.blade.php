@@ -24,7 +24,7 @@
     <div class="{{ $auth_type ?? 'login' }}-box">
 
         {{-- Logo --}}
-        <div class="{{ $auth_type ?? 'login' }}-logo">
+        <div class="{{ $auth_type ?? 'login' }}-logo-style">
             <a href="{{ $dashboard_url }}">
 
                 {{-- Logo Image --}}
@@ -41,8 +41,14 @@
                             height="{{ config('adminlte.auth_logo.img.height') }}"
                          @endif>
                 @else
-                    <img src="{{ asset(config('adminlte.logo_img')) }}"
-                         alt="{{ config('adminlte.logo_img_alt') }}" height="50">
+                    <div class="login-header">
+                        <div>
+                            <img class="" src="{{ asset(config('adminlte.logo_img')) }}" alt="{{ config('adminlte.logo_img_alt') }}">
+                        </div>
+                        <div>
+                            <h4>TUCMS</h4>
+                        </div>
+                    </div>
                 @endif
 
                 {{-- Logo Label --}}
@@ -52,16 +58,10 @@
         </div>
 
         {{-- Card Box --}}
-        <div class="card {{ config('adminlte.classes_auth_card', 'card-outline card-primary') }}">
-
-            {{-- Card Header --}}
-            @hasSection('auth_header')
-                <div class="card-header {{ config('adminlte.classes_auth_header', '') }}">
-                    <h3 class="card-title float-none text-center">
-                        @yield('auth_header')
-                    </h3>
-                </div>
-            @endif
+        <div class="card-login">
+            <div>
+                <h1>{{ __('message.sign_in') }}</h1>
+            </div>
 
             {{-- Card Body --}}
             <div class="card-body {{ $auth_type ?? 'login' }}-card-body {{ config('adminlte.classes_auth_body', '') }}">
@@ -74,9 +74,10 @@
                     @yield('auth_footer')
                 </div>
             @endif
-
         </div>
-
+    </div>
+    <div class="tuc-version">
+        <p>TUCMS v1</p>
     </div>
 @stop
 

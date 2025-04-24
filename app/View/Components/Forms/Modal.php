@@ -15,32 +15,27 @@ class Modal extends Component
     public $title;
     public $description;
     public $route;
-    public $titleImage;
-    public $width;
-    public $height;
     public $idModal;
     public $textButtonCancel;
     public $textButtonConfirm;
     public $iconButtonConfirm;
     public $idItem;
-    public $multiColumn;
+    public $classAdd;
     public $confirmAction;
     public $cancelAction;
     public $customForm;
+    public $buttonAdditional;
 
-    public function __construct($title, $description, $route, $textButtonConfirm, $iconButtonConfirm = '', $titleImage = '', $width = 0, $height = 0, $idModal = 'modalForm', $idItem = '', $multiColumn = false, $confirmAction = '', $cancelAction = '', $textButtonCancel = '', $customForm = '')
+    public function __construct($title, $description, $route, $textButtonConfirm, $iconButtonConfirm = '', $idModal = 'modalForm', $idItem = '', $classAdd = "", $confirmAction = '', $cancelAction = '', $textButtonCancel = '', $customForm = '', $buttonAdditional='')
     {
         $this->title = $title;
         $this->description = $description;
         $this->route = $route;
         $this->textButtonConfirm = $textButtonConfirm;
         $this->iconButtonConfirm = $iconButtonConfirm;
-        $this->titleImage = $titleImage;
-        $this->width = $width;
-        $this->height = $height;
         $this->idModal = $idModal;
         $this->idItem = $idItem;
-        $this->multiColumn = $multiColumn;
+        $this->classAdd = $classAdd;
         $this->customForm = $customForm;
 
         if ($textButtonCancel == '')
@@ -54,6 +49,7 @@ class Modal extends Component
         $this->confirmAction = $confirmAction;
 
         $this->cancelAction = $cancelAction;
+        $this->buttonAdditional = $buttonAdditional;
     }
 
     /**

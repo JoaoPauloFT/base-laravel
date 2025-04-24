@@ -25,39 +25,62 @@
         @csrf
 
         {{-- Email field --}}
-        <div class="input-group">
-            <label>{{ __('message.email') }}</label>
-            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                   value="{{ old('email') }}" placeholder="{{ __('message.digit_email') }}" autofocus>
+        <div class="group">
+            <div class="fields-group">
+                <div class="input-group">
+                    <label>{{ __('message.username') }}</label>
+                    <input type="text" name="username" class="form-control"
+                        value="{{ old('username') }}" placeholder="{{ __('message.enter_the_username') }}" autofocus>
+                </div>
 
-            @error('email')
-            <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-
-        {{-- Password field --}}
-        <div class="input-group">
-            <label>{{ __('message.password') }}</label>
-            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
-                   placeholder="{{ __('message.digit_password') }}">
-
-            @error('password')
-            <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-
-        {{-- Login field --}}
-        <div class="footer mt-2">
-            <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
-                {{ __('message.access_system') }}
-            </button>
-
-            <p>Loja v1.0</p>
+                {{-- Password field --}}
+                <div class="input-group">
+                    <label>{{ __('message.password') }}</label>
+                    <div class='input-password'>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('message.digit_password') }}">
+                        <div id="btnTogglePassword">
+                            <i class="ti ti-eye" id="togglePassword"></i>
+                        </div>
+                    </div>
+                    @error('username')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="field-group">
+                {{-- Login field --}}
+                <div class="footer">
+                    <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
+                        <span>{{ __('message.login') }}</span>
+                        <i class="ti ti-login-2"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 
     </form>
+
 @stop
+
+<script>
+    window.addEventListener('load', function () {
+        const btnTogglePassword = document.querySelector('#btnTogglePassword');
+
+        btnTogglePassword.addEventListener('click', function () {
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+
+            if(password.getAttribute('type') === 'password') {
+                password.setAttribute('type', 'text');
+                togglePassword.classList.remove('ti-eye');
+                togglePassword.classList.add('ti-eye-off');
+            } else {
+                password.setAttribute('type', 'password');
+                togglePassword.classList.remove('ti-eye-off');
+                togglePassword.classList.add('ti-eye');
+            }
+        });
+    });
+</script>

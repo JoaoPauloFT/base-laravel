@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => 'Base Laravel v1.0',
+    'logo' => 'Base Laravel',
     'logo_img' => 'images/logo_system.png',
     'logo_img_class' => 'logo-navbar',
     'logo_img_xl' => null,

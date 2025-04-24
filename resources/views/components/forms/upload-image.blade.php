@@ -9,8 +9,13 @@
             input{{ $idItem }}.click();
         });
 
-        input{{ $idItem }}.addEventListener("change", function () {
-            showCropBox{{ $idItem }}(this);
+        input{{ $idItem }}.addEventListener("change", function (evt) {
+            if(validFile(this.files[0])) {
+                var tgt = evt.target || window.event.srcElement,
+                    files = tgt.files;
+
+                showCropBox{{ $idItem }}(files);
+            }
         });
 
         dropArea{{ $idItem }}.addEventListener("dragover", (event) => {
@@ -25,179 +30,134 @@
 
         dropArea{{ $idItem }}.addEventListener("drop", (event) => {
             event.preventDefault();
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(event.dataTransfer.files[0]);
-            if (dataTransfer.files[0].type === 'image/png' || dataTransfer.files[0].type === 'image/jpeg') {
-                input{{ $idItem }}.files = dataTransfer.files;
-                showCropBox{{ $idItem }}(input{{ $idItem }});
-            } else {
-                setError('{{ __('message.format_incorrect_response', ['format' => 'png ou jpg/jpeg']) }}')
+            if(validFile(event.dataTransfer.files[0])) {
+                showCropBox{{ $idItem }}(event.dataTransfer.files);
             }
 
             dropArea{{ $idItem }}.classList.remove("active");
         });
 
-        function uploadImage() {
-            var file = input{{ $idItem }}.files[0];
-            var formData = new FormData();
-            formData.append('file', file);
-            formData.append('width', {{ $width }});
-            formData.append('height', {{ $height }});
-
-            $.ajax('{{ route('FileUpload') }}', {
-                type: 'POST',
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-                data: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                beforeSend: function () {
-                    document.querySelectorAll('.submit').forEach(function (e) {
-                        e.disabled = true;
-                    });
-                },
-                success: function (response) {
-                    document.querySelector('#image{{ $idItem }}').value = response.data['nameImage'];
-                    document.querySelectorAll('.submit').forEach(function (e) {
-                        e.disabled = false;
-                    });
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    document.querySelectorAll('.submit').forEach(function (e) {
-                        e.disabled = false;
-                    });
-                }
-            });
-        }
-
-        function thumbmailView(file) {
-            const image = new File([file],"img.png",{type:"image/png",lastModified:new Date().getTime()});
-            const dataTransfer = new DataTransfer();
-            dataTransfer.items.add(image);
-            input{{ $idItem }}.files=dataTransfer.files;
-
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function (readEvent) {
-                const img = new Image();
-                img.src = readEvent.target.result;
-                img.onload = function () {
-                    var result = validSize(img, {{ $width }}, {{ $height }});
-
-                    if (result) {
-                        dropArea{{ $idItem }}.innerHTML = "<img class='preview-img' src='" + readEvent.target.result + "' />";
-                        document.querySelector('.drag-area{{ $idItem }}').style.cssText = 'border: 1px dashed #E7E7E7 !important';
-                        document.querySelector('.subdescription{{ $idItem }}').style.cssText = 'color: #CECBD0 !important';
-                        document.querySelector('.subdescription{{ $idItem }}').innerText = '{{ __('message.image_size', ['size' => $width.'x'.$height]) }}';
-
-                        uploadImage();
-                    } else {
-                        setError('{{ __('message.size_incorrect_response', ['size' => $width.'x'.$height]) }}');
-                    }
-                }
-            }
-        }
-
-        function validSize(file, width, height) {
-            return file.width === width && file.height === height;
-        }
-
-        function setError(messageError) {
-            input{{ $idItem }}.value = '';
-            dropArea{{ $idItem }}.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                    <path d="M22.5 40H37.5V25H47.5L30 7.5L12.5 25H22.5V40ZM12.5 45H47.5V50H12.5V45Z" fill="#CECBD0"/>
-                </svg>
-                <span>{{ __('message.upload_image_description') }}</span>
-            `;
-
-            document.querySelector('.drag-area{{ $idItem }}').style.cssText = 'border: 1px dashed #E04B59 !important';
-            document.querySelector('.subdescription{{ $idItem }}').style.cssText = 'color: #E04B59 !important';
-            document.querySelector('.subdescription{{ $idItem }}').innerText = messageError;
-        }
-
         // Crop Image
 
-        var options = {
-            thumbBox: '#thumb-box{{ $idItem }}',
-            spinner: '.spinner',
-            imgSrc: ''
-        };
+        var $image = $('#thumb-box{{ $idItem }}');
 
-        var cropper = $('#crop-box{{ $idItem }}').cropbox(options);
-
-        function showCropBox{{ $idItem }}(element) {
-            var $selector = $(element),
-                file = element.files ? element.files[0] : "";
-
-            if (file) {
-
-                var height = {{ $height }},
-                    width = {{ $width }},
-                    parentHeight = ({{ $height }} + 100),
-                    parentWidth = ({{ $width }} + 100);
-
-                if (typeof FileReader == 'function') {
-
-                    $(options.thumbBox).css({"width": width + "px", "height": height + "px", "margin-top": (height / 2) * -1 + "px", "margin-left": (width / 2) * -1 + "px"});
-                    $('.crop').css({"width": parentWidth + "px", "max-width": parentWidth + "px"});
-                    $('.crop-box').css({height: parentHeight + "px"});
-                    $('#crop-box{{ $idItem }}').css({height: parentHeight + "px"});
-
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        options.imgSrc = e.target.result;
-                        cropper = $('#crop-box{{ $idItem }}').cropbox(options);
-                    };
-                    reader.readAsDataURL(file);
-
-                    setTimeout(function () {
-                        $("#cropModal{{ $idItem }}").modal('toggle');
-
-                        setTimeout(function () {
-                            cropper.zoomIn();
-                            cropper.zoomOut();
-                        }, 500);
-                    }, 500);
-
-                    $selector.val("");
-                }
-            }
-        }
-
-        $('#image-crop-button{{ $idItem }}').on('click', function () {
-            thumbmailView(cropper.getBlob());
-            $("#cropModal{{ $idItem }}").modal('toggle');
+        $image.cropper({
+            viewMode: 2,
+            @if($width > 0)
+                aspectRatio: {{ $width }}/{{ $height }},
+            @endif
         });
 
-        $('#close-modal-image{{ $idItem }}').on('click', function () {
-            $("#cropModal{{ $idItem }}").modal('toggle');
+        var cropper = $image.data('cropper');
+
+        $('.close-modal-image{{ $idItem }}').on('click', function () {
+            $("#cropModal{{ $idItem }}").modal('hide');
+            $("#modalForm{{ $idItem }}").modal('show');
         });
 
         $('#image-zoomin-button{{ $idItem }}').on('click', function () {
-            cropper.zoomIn();
+            cropper.zoom(0.1);
         });
 
         $('#image-zoomout-button{{ $idItem }}').on('click', function () {
-            cropper.zoomOut();
+            cropper.zoom(-0.1);
         });
+
+        $('#image-rotatein-button{{ $idItem }}').on('click', function () {
+            cropper.rotate(90);
+        });
+
+        $('#image-rotateout-button{{ $idItem }}').on('click', function () {
+            cropper.rotate(-90);
+        });
+
+        $('#image-crop-button{{ $idItem }}').on('click', function () {
+            thumbmailView();
+            $("#cropModal{{ $idItem }}").modal('toggle');
+            $("#modalForm{{ $idItem }}").modal('toggle');
+
+        });
+
+        function showCropBox{{ $idItem }}(files) {
+            let imgsrc = URL.createObjectURL(files[0])
+            if(imgsrc) {
+                cropper.replace(imgsrc);
+
+                $("#modalForm{{ $idItem }}").modal('hide');
+                $("#cropModal{{ $idItem }}").modal('show');
+            }
+        }
+
+        // Preview Image
+
+        function thumbmailView() {
+            cropper.getCroppedCanvas().toBlob((blob) => {
+                const formData = new FormData();
+
+                formData.append('file', blob);
+                formData.append('width', {{ $width }});
+                formData.append('height', {{ $height }});
+                formData.append('maxSize', {{ $maxSize }});
+                formData.append('path', 'images/temp');
+
+                $.ajax('{{ route('FileUpload') }}', {
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    beforeSend: function () {
+                        document.querySelectorAll('.submit').forEach(function (e) {
+                            e.disabled = true;
+                        });
+                    },
+                    success: function (response) {
+                        {{ $completeFunction }}(response);
+                        document.querySelectorAll('.submit').forEach(function (e) {
+                            e.disabled = false;
+                        });
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        document.querySelectorAll('.submit').forEach(function (e) {
+                            e.disabled = false;
+                        });
+                    }
+                });
+            });
+        }
+
+        function completeUpload{{ $idItem }}(response) {
+            $('#preview-files{{ $idItem }}').append('<div class="img-preview"><img src="' + response.data['locale'] + '" alt="preview"><i class="ti ti-x remove-file" onclick="removeImage{{ $idItem }}(this, \'' + response.data['name'] + ',\')"></i></div>');
+            document.querySelector('#{{ $field.$idItem }}').value += response.data['name'] + ",";
+        }
+
+        function validFile(file) {
+            if (file.type === 'image/png' || file.type === 'image/jpeg'|| file.type === 'image/webp') {
+                dropArea{{ $idItem }}.style.cssText = 'border: 1px dashed #E7E7E7 !important';
+                document.querySelector('.subdescription{{ $idItem }}').style.cssText = 'color: #ADB5BD !important';
+                document.querySelector('.subdescription{{ $idItem }}').innerText = '{{ __('message.image_formats') }}';
+                return true;
+            } else {
+                input{{ $idItem }}.value = '';
+                dropArea{{ $idItem }}.style.cssText = 'border: 1px dashed #E04B59 !important';
+                document.querySelector('.subdescription{{ $idItem }}').style.cssText = 'color: #E04B59 !important';
+                document.querySelector('.subdescription{{ $idItem }}').innerText = "{{ __('message.format_incorrect_response', ['format' => 'png/jpg/jpeg/webp']) }}";
+                return false;
+            }
+        }
     });
+
+    function removeImage{{ $idItem }}(element, image) {
+        $(element).parent().remove();
+        let value = $('#{{ $field.$idItem }}').val();
+        $('#{{ $field.$idItem }}').val(value.replaceAll(image, ''));
+    }
 </script>
 
-<div class="mt-3">
-    <label>{{ $title }}</label>
-    <div>
-        <div class="drag-area{{ $idItem }} divImage">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                <path d="M22.5 40H37.5V25H47.5L30 7.5L12.5 25H22.5V40ZM12.5 45H47.5V50H12.5V45Z" fill="#CECBD0"/>
-            </svg>
-            <span>{{ __('message.upload_image_description') }}</span>
-        </div>
-        <input class="input-drag{{ $idItem }}" type="file" accept="image/png, image/jpeg" hidden>
-    </div>
-    <p class="subdesc subdescription{{ $idItem }}">{{ __('message.image_size', ['size' => $width.'x'.$height]) }}</p>
+<div>
+    {{ $slot }}
 </div>
 
 <div class="modal fade" id="cropModal{{ $idItem }}" tabindex="-1" role="dialog" aria-labelledby="cropModal">
@@ -205,24 +165,27 @@
         <div class="modal-content crop">
             <div class="header">
                 <div>
-                    <h1>Cortar a imagem</h1>
                     <div>
-                        <i class="fa-solid fa-x" data-dismiss="modal"></i>
+                        <h1>{{ __('message.crop_image') }}</h1>
+                    </div>
+                    <div class="min-content">
+                        <i class="ti ti-x close-modal-image{{ $idItem }}"></i>
                     </div>
                 </div>
-                <p>Ajuste e corte a imagem de acordo com o desejado</p>
+                <p>{{ __('message.adjust_and_crop_image') }}</p>
             </div>
             <div class="body-modal">
-                <div id="crop-box{{ $idItem }}" class="crop-box">
-                    <div id="thumb-box{{ $idItem }}" class="thumb-box"></div>
-                    <div class="spinner" style="display: none">Loading...</div>
+                <div class="new-crop">
+                    <img id="thumb-box{{ $idItem }}" src="" alt="Image to Crop">
                 </div>
             </div>
             <div class="footer">
-                <button id="image-zoomout-button{{ $idItem }}" type="button" class="secondary-button"><i class="fa-solid fa-minus"></i></button>
-                <button id="image-zoomin-button{{ $idItem }}" type="button" class="secondary-button"><i class="fa-solid fa-plus"></i></button>
-                <button id="close-modal-image{{ $idItem }}" type="button" class="secondary-button">Fechar</button>
-                <button id="image-crop-button{{ $idItem }}" type="button" class="primary-button">Cortar</button>
+                <button id="image-rotateout-button{{ $idItem }}" type="button" class="secondary-button"><i class="ti ti-rotate-2"></i></button>
+                <button id="image-rotatein-button{{ $idItem }}" type="button" class="secondary-button"><i class="ti ti-rotate-clockwise-2"></i></button>
+                <button id="image-zoomout-button{{ $idItem }}" type="button" class="secondary-button"><i class="ti ti-minus"></i></button>
+                <button id="image-zoomin-button{{ $idItem }}" type="button" class="secondary-button"><i class="ti ti-plus"></i></button>
+                <button type="button" class="secondary-button close-modal-image{{ $idItem }}">{{ __('message.close') }}</button>
+                <button id="image-crop-button{{ $idItem }}" type="button" class="primary-button">{{ __('message.crop') }}</button>
             </div>
         </div>
     </div>

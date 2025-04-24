@@ -22,8 +22,10 @@ class Table extends Component
     public $columnsSide;
     public $routes;
     public $hasExport;
+    public $hasBulkDelete;
+    public $hasButtonContributions;
 
-    public function __construct($dropdownFilter = [], $dropdownMultipleFilter = [], $click = "", $hideColumn = [], $ordering = "[[0, 'asc']]", $moment = "DD/MM/YYYY", $widthColumns = [], $notOrderColumns = [], $serverSide = false, $columnsSide = [], $routes = "", $hasExport = true)
+    public function __construct($dropdownFilter = [], $dropdownMultipleFilter = [], $click = "", $hideColumn = [], $ordering = "[[0, 'asc']]", $moment = "DD/MM/YYYY", $widthColumns = [], $notOrderColumns = [], $serverSide = false, $columnsSide = [], $routes = "", $hasExport = true, $hasBulkDelete = false, $hasButtonContributions = false)
     {
         //
         $this->dropdownFilter = $dropdownFilter;
@@ -46,6 +48,8 @@ class Table extends Component
         $this->columnsSide = $columnsSide;
         $this->routes = $routes;
         $this->hasExport = $hasExport;
+        $this->hasBulkDelete = $hasBulkDelete;
+        $this->hasButtonContributions = $hasButtonContributions;
     }
 
     /**

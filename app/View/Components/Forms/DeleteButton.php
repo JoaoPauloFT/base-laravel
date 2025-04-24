@@ -16,13 +16,15 @@ class DeleteButton extends Component
     public $route;
     public $title;
     public $secondParam;
+    public $formId;
 
-    public function __construct($id, $route, $title, $secondParam = "")
+    public function __construct($id, $route, $title, $secondParam = "", $formId = "")
     {
         $this->id = $id;
         $this->route = $route;
         $this->title = $title;
         $this->secondParam = $secondParam;
+        $this->formId = $formId;
     }
 
     /**

@@ -15,9 +15,10 @@
             input {
                 @extend .input-form;
 
-                background-image: url('/images/search-icon.svg')!important;
+                background-image: url('../images/search-icon.svg')!important;
                 background-repeat: no-repeat!important;
-                background-position: 97% 50%!important;
+                background-position: 95% 50%!important;
+                width: 200px!important;
 
                 &:focus-visible {
                     outline: none;
@@ -29,38 +30,45 @@
 }
 
 .dt-buttons {
-    padding: 1rem;
-    flex-direction: row-reverse;
-    width: auto;
-    flex-wrap: nowrap;
-    display: flex;
-    gap: 1rem;
+     padding: 1rem;
+     flex-direction: row-reverse;
+     width: auto;
+     flex-wrap: nowrap;
+     display: flex;
+     gap: 1rem;
 
-    .dt-button {
-        @extend .secondary-button;
+     .dt-button {
+         @extend .secondary-button;
 
-        span {
-            display: flex;
-            gap: 0.25rem;
-            align-items: center;
+         span {
+             display: flex;
+             gap: 0.25rem;
+             align-items: center;
 
-            i {
-                font-size: 1.25rem;
-            }
+             i {
+                 font-size: 1.25rem;
+             }
 
-            .fa-angle-down {
-                margin-bottom: -2px;
-            }
-        }
-    }
-}
+             .fa-angle-down {
+                 margin-bottom: -2px;
+             }
+         }
+     }
+ }
 
 .selects {
     padding: 1rem;
     display: flex;
     gap: 1rem;
     border-top: 1px solid #E7E7E7;
-    align-items: center;
+    align-items: flex-start;
+
+    form {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin: 0;
+    }
 
     .filter-span {
         color: $font-0;
@@ -75,15 +83,6 @@
 
 .btnLimpar {
     @extend .secondary-button;
-}
-
-.btnAction {
-    all: unset!important;
-    color: $font-2!important;
-    cursor: pointer!important;
-    i {
-        font-size: 1.5rem;
-    }
 }
 
 .whatsappButton {
@@ -168,21 +167,15 @@
     }
 }
 
-.divActions {
-    display: flex;
-    gap: 0.25rem;
-    justify-content: center;
-}
-
 table.list {
     border-bottom: 0!important;
     width: 100%!important;
 
-    tr {
+    >thead>tr {
         border-collapse: collapse!important;
         min-height: 60px;
 
-        th {
+        >th {
             color: $font-0;
             font-size: 0.875rem;
             font-weight: 600!important;
@@ -190,12 +183,16 @@ table.list {
             padding: 0.75rem 1rem!important;
             border-top: 2px solid #DEE2E6!important;
             border-bottom: 2px solid #DEE2E6!important;
+            white-space: nowrap;
             &.center {
                 text-align: center!important;
             }
         }
+    }
 
-        td {
+    >tbody>tr {
+
+        >td {
             box-shadow: none!important;
             padding: 1rem!important;
             border-top: 0!important;
@@ -275,11 +272,13 @@ table.list {
 table.dataTable thead>tr>th.sorting:before {
     content: "↑";
     font-size: 1rem!important;
+    right: 1px;
 }
 
 table.dataTable thead>tr>th.sorting:after {
     content: "↓";
     font-size: 1rem!important;
+    right: 1px;
 }
 
 table.dataTable thead>tr>th.sorting:not(.sorting_asc):before, table.dataTable thead>tr>th.sorting:not(.sorting_desc):after {
@@ -289,6 +288,7 @@ table.dataTable thead>tr>th.sorting:not(.sorting_asc):before, table.dataTable th
 .imgName {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
 }
 
 .imgRowTable {
@@ -296,7 +296,7 @@ table.dataTable thead>tr>th.sorting:not(.sorting_asc):before, table.dataTable th
     height: 1.25rem;
     border-radius: 50%;
     vertical-align: sub!important;
-    margin-right: 0.5rem;
+    margin-right: 0;
 }
 
 .payment_method {
@@ -361,4 +361,238 @@ table.dataTable thead>tr>th.sorting:not(.sorting_asc):before, table.dataTable th
 
 .clickable {
     cursor: pointer;
+}
+
+td.img-church {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    div{
+        .name-church {
+            color: $font-0;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+        }
+
+        .square-church {
+            color: #6C757D;
+            font-size: 0.75rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 130%;
+        }
+
+        .img {
+            width: 63px;
+            height: 40px;
+        }
+    }
+}
+
+.table-body-roles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 4px;
+    border: 1px solid $border-color;
+    margin-top: 0 !important;
+
+    th {
+        color: $font-0;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%;
+    }
+
+    span {
+        color: $font-0;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+    }
+
+    .space-thead {
+        display: flex;
+        padding: 0.5rem;
+        align-items: center;
+        gap: 0.25rem;
+        flex: 1 0 0;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.width-100px {
+    width: 100px;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-registers {
+    display: flex;
+    padding: 1rem 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    align-self: stretch;
+
+    span {
+        width: 768px !important;
+        height: 20px !important;
+        text-align: center !important;
+        font-size: 0.875rem !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        line-height: 140% !important;
+        color: $font-2 !important;
+    }
+}
+
+.table-church-address {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+
+    .header-table {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        align-self: stretch;
+    }
+
+    .table-address {
+        border-radius: 4px;
+        border: 1px solid #D9DDDF;
+        overflow: hidden;
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    th {
+        padding: 0.75rem 1rem;
+        align-items: center;
+        color: $font-0;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%;
+    }
+
+    td {
+        min-height: 60px;
+        padding: 16px;
+        align-items: center;
+        gap: 4px;
+        align-self: stretch;
+        border-top: 1px solid $gray-0;
+        background: $white-color;
+
+        span {
+            color: $font-0;
+            font-size: 0.875rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+        }
+    }
+
+    .action {
+        display: flex;
+        justify-content: center;
+
+        form {
+            margin: 0;
+        }
+    }
+}
+
+.checkbox-table {
+    width: 1rem;
+    height: 1rem;
+    accent-color: $primary-color;
+}
+
+.password-age {
+    gap: 0.25rem;
+    display: flex;
+
+    div {
+        display: flex;
+        align-items: center;
+    }
+
+    .ti-help {
+        color: $font-2;
+    }
+}
+
+.status-envelope {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+
+    .preparing {
+        display: flex;
+        padding: 0.25rem 0.5rem;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.25rem;
+        background: #949ED0;
+        color: $white-color;
+    }
+
+    .prepared {
+        display: flex;
+        padding: 0.25rem 0.5rem;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.25rem;
+        background: #86B38B;
+        color: $white-color;
+    }
+}
+
+
+.filter-min-max-value {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+//Loading
+
+.loading-table {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+}
+
+.table-checkbox {
+    display: flex;
+    align-items: center;
+    input {
+        width: 1rem;
+        height: 1rem;
+        accent-color: $primary-color;
+    }
 }

@@ -5,16 +5,20 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
+        "darkaonline/l5-swagger": "^9.0",
         "doctrine/dbal": "^3.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.9",
+        "intervention/image": "^3.11",
         "jeroennoten/laravel-adminlte": "^3.9",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^4.0",
         "laravellegends/pt-br-validator": "^11.0",
-        "sendgrid/sendgrid": "^8.1"
+        "maatwebsite/excel": "*",
+        "sendgrid/sendgrid": "^8.1",
+        "yajra/laravel-datatables": "11"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^2.0",

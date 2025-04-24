@@ -19,12 +19,15 @@ class Select extends Component
     public $mask;
     public $options;
     public $formId;
-    public $isTab;
+    public $onLoad;
     public $customAttributes;
     public $value;
     public $idModal;
+    public $noSearch;
 
-    public function __construct($field, $name, $placeholder, $options, $type = "text", $mask = "", $formId = "", $isTab = false, $customAttributes = "", $value = "", $idModal = "modalForm")
+    public $autoCompleteRoute;
+
+    public function __construct($field, $name, $placeholder, $options, $type = "text", $mask = "", $formId = "", $onLoad = true, $customAttributes = "", $value = "", $idModal = "modalForm", $noSearch = false, $autoCompleteRoute = '')
     {
         $this->field = $field;
         $this->name = $name;
@@ -33,12 +36,14 @@ class Select extends Component
         $this->type = $type;
         $this->mask = $mask;
         $this->formId = $formId;
-        $this->isTab = $isTab;
+        $this->onLoad = $onLoad;
         $this->customAttributes = $customAttributes;
         $this->value = $value;
         if ($idModal == "modalForm")
             $idModal .= $formId;
         $this->idModal = $idModal;
+        $this->noSearch = $noSearch;
+        $this->autoCompleteRoute = $autoCompleteRoute;
     }
 
     /**

@@ -4,34 +4,33 @@ namespace App\View\Components\Forms;
 
 use Illuminate\View\Component;
 
-class Checkbox extends Component
+class FieldText extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
+
     public $field;
     public $name;
+    public $placeholder;
     public $customAttributes;
     public $formId;
-    public $checked;
-    public $hasBoldName;
-    public $boldName;
+    public $value;
+    public $maxlength;
+    public $oldValue;
 
-    public function __construct($field, $name, $customAttributes = "", $formId = "", $value = "", $hasBoldName = false, $boldName = "")
+    public function __construct($field, $name, $placeholder = "", $customAttributes = "", $formId = "", $value = "", $maxlength='',$oldValue=false)
     {
         $this->field = $field;
         $this->name = $name;
+        $this->placeholder = $placeholder;
         $this->customAttributes = $customAttributes;
         $this->formId = $formId;
-        $this->hasBoldName = $hasBoldName;
-        $this->boldName = $boldName;
-
-        if (old('form') == 'formSubmit'.$formId)
-            $this->checked = old($field) == "1";
-        else
-            $this->checked = $value == "1";
+        $this->value = $value;
+        $this->maxlength = $maxlength;
+        $this->oldValue = $oldValue;
     }
 
     /**
@@ -41,6 +40,6 @@ class Checkbox extends Component
      */
     public function render()
     {
-        return view('components.forms.checkbox');
+        return view('components.forms.field-text');
     }
 }

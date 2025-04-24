@@ -49,11 +49,96 @@ php artisan migrate
 php artisan db:seed
 ```
 
-8. Acesse o link da aplicação de acordo com o APP_URL.
+8. Rode as storages padrões da base:
+```sh
+php artisan storage:link
+```
+
+9. Acesse o link da aplicação de acordo com o APP_URL.
 
 
-9. Tente realizar o login com as credenciais abaixo:
+10. Tente realizar o login com as credenciais abaixo:
 ```
 Email: admin@admin.com
 Senha: admin123
 ```
+
+## Comando comuns no Laravel
+
+- Criar as arquivos do CRUD completo:
+```sh
+php artisan make:model NomeDoModel -mc
+```
+- Criar uma migration:
+```sh
+php artisan make:migration NomeDaMigration
+```
+- Rodar a migration:
+```sh
+php artisan migrate
+```
+- Fazer rollback de uma migration:
+```sh
+php artisan migrate:rollback
+```
+- Criar uma seed:
+```sh
+php artisan make:seeder NomeDoSeeder
+```
+- Rodar as seeds:
+```sh
+php artisan db:seed
+```
+- Rodar uma seed especifica:
+```sh
+php artisan db:seed --class=NomeDaSeeder
+```
+- Limpar o cache da aplicação:
+```sh
+php artisan cache:clear
+```
+- Listar todas as rotas:
+```sh
+php artisan route:list
+```
+- Criar componentes:
+```sh
+php artisan make:component NomeDoComponente
+```
+- Criar Requests:
+```sh
+php artisan make:request NomeDoRequest
+```
+- Criar API's:
+```sh 
+php artisan make:controller Api/NomeDoController --api
+```
+
+## Instalar SASS no VS Code
+
+1. Rode o comando:
+```sh
+choco install sass
+```
+
+2. Instale a extensão "live sass compiler" no VS Code.
+
+
+3. Na própria página da extensão, aperte no icone de configurações (engrenagem) e em Settings.
+
+
+4. Em seguida, localize o link em azul "Edit in settings.json"
+
+
+5. Cole o seguinte código na linha acima de "liveSassCompile.settings.autoprefix":
+```
+    "liveSassCompile.settings.formats":[
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/public/css",
+        }
+    ],
+```
+
+6. Na barra inferior, aperte em "Watch Sass".

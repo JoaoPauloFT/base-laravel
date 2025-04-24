@@ -1,4 +1,9 @@
 @import 'variables';
+.item-form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
 
 .input-form {
     border-radius: 0.25rem!important;
@@ -29,7 +34,22 @@
 
 .check-box {
     display: flex;
-    padding-left: 1.25rem;
+    align-items: center;
+    gap: 0.5rem;
+
+    input {
+        width: 1rem;
+        height: 1rem;
+        accent-color: $primary-color;
+    }
+
+    label {
+        color: $font-0!important;
+        font-size: 0.875rem!important;
+        font-weight: 400!important;
+        line-height: 140%!important;
+        margin: 0 !important;
+    }
 }
 
 .select-form {
@@ -77,6 +97,29 @@
     }
 }
 
+.input-date-filter {
+    width: 220px!important;
+}
+
+.input-date-filter-donations {
+    width: 160px!important;
+}
+
+.input-date-filter-w180 {
+    width: 180px !important;
+}
+
+.input-filter-w100 {
+    width: 100px !important;
+}
+
+.input-date {
+    @extend .input-form;
+    background-image: url('../images/calendar-icon.svg')!important;
+    background-repeat: no-repeat!important;
+    background-position: 95% 50%!important;
+}
+
 .default-buttons {
     all: unset!important;
     padding: 0.5rem 0.75rem!important;
@@ -90,6 +133,9 @@
     align-items: center!important;
     cursor: pointer!important;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.10);
+    &.small-button {
+        padding: 0.25rem 0.5rem!important;
+    }
     &:disabled {
         opacity: 0.4 !important;
     }
@@ -107,6 +153,13 @@
     &:hover {
         background-color: $primary-color-hover!important;
     }
+    &:disabled {
+        cursor: default !important;
+
+        &:hover {
+            background-color: $primary-color !important;
+        }
+    }
 }
 
 .secondary-button {
@@ -116,6 +169,49 @@
     background-color: $white-color!important;
     &:hover {
         background-color: $secondary-button-hover!important;
+    }
+    &:disabled {
+        cursor: default !important;
+
+        &:hover {
+            background-color: $white-color!important;
+        }
+    }
+}
+
+.advanced-filters-button {
+    @extend .default-buttons;
+    border: 1px solid $border-color!important;
+    color: $font-3!important;
+    background-color: $white-color!important;
+    padding: 0.5rem !important;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.10);
+
+    &:hover {
+        background-color: $secondary-button-hover!important;
+    }
+    &:disabled {
+        cursor: default !important;
+
+        &:hover {
+            background-color: $white-color!important;
+        }
+    }
+}
+
+.danger-button {
+    @extend .default-buttons;
+    color: $white-color!important;
+    background-color: $danger-color !important;
+    &:hover {
+        background-color: $danger-color-hover!important;
+    }
+    &:disabled {
+        cursor: default !important;
+
+        &:hover {
+            background-color: $danger-color !important;
+        }
     }
 }
 
@@ -161,6 +257,13 @@
                 line-height: 1rem;
                 padding: 0 1.25rem 0 0;
                 display: table-row;
+                height: 1.25rem;
+
+                .select2-selection__clear {
+                    font-size: 1rem;
+                    color: $danger-color;
+                    margin-left: 0.25rem;
+                }
 
                 .select2-selection__placeholder {
                     color: $font-2;
@@ -170,10 +273,20 @@
 
                 .select2-selection__choice {
                     margin: 0!important;
+
+                    .select2-selection__choice__remove {
+                        display: none;
+                    }
                 }
 
                 .select2-search__field {
                     margin: 0!important;
+                    font-size: 0.875rem;
+                    line-height: 140%;
+                    cursor: pointer;
+                    &::placeholder {
+                        color: $font-2!important;
+                    }
                 }
             }
 
@@ -184,6 +297,47 @@
                 width: 1rem!important;
             }
         }
+    }
+}
+
+.disabled-select2 {
+    pointer-events: none;
+    background-color: $gray-1 !important;
+    font-weight: 350 !important;
+}
+
+.select2-container--default .select2-selection--multiple:before {
+    content: ' ';
+    position: absolute;
+    border-color: #888 transparent transparent transparent;
+    border-style: solid;
+    border-width: 0.25rem 0.25rem 0 0.25rem;
+    right: 0.75rem;
+    margin-top: -2px;
+    top: 50%;
+}
+
+.select2-container--open .select2-selection--multiple:before {
+    content: ' ';
+    position: absolute;
+    border-color: transparent transparent #888 transparent;
+    border-width: 0 0.25rem 0.25rem 0.25rem;
+    right: 0.75rem;
+    margin-top: -2px;
+    top: 50%;
+}
+
+select[readonly].select2-hidden-accessible + .select2-container {
+    pointer-events: none;
+    touch-action: none;
+
+    .select2-selection {
+        background: $gray-1;
+        box-shadow: none;
+    }
+
+    .select2-selection__arrow, select[readonly].select2-hidden-accessible + .select2-container .select2-selection__clear {
+        display: none;
     }
 }
 
@@ -204,6 +358,11 @@
         border: 1px dashed #E04B59 !important;
     }
 
+    i {
+        color: $font-2;
+        font-size: 3.75rem;
+    }
+
     svg {
         color: $font-2;
         width: 60px;
@@ -212,9 +371,8 @@
 
     span {
         color: $font-2;
-        font-style: normal;
         font-size: 0.875rem;
-        line-height: 1.25rem;
+        line-height: 140%;
         white-space: nowrap;
     }
 }
@@ -255,7 +413,8 @@
         font-size: 0.75rem;
         font-style: italic;
         line-height: 130%;
-        margin: 0.25rem 0 0;
+        margin: 0;
+        margin-top: 0.25rem;
     }
 }
 
@@ -356,4 +515,40 @@
         line-height: 400px;
         background: rgba(0, 0, 0, 0.7);
     }
+}
+
+.textarea-counter{
+    margin-top: 0.25rem;
+    display: flex;
+    div {
+        color: $font-2;
+        font-size: 0.75rem;
+        font-weight: 400;
+        line-height: 130%;
+    }
+}
+
+//Style Typeahead
+.tt-menu {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.tt-suggestion {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+
+.tt-suggestion:hover,
+.tt-suggestion.tt-cursor {
+    background-color: #f0f0f0;
+}
+
+.tt-hint {
+    color: #999;
 }
